@@ -1,0 +1,30 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Acceuil{% endblock %}
+
+{% block body %}
+<main>
+    
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/cA02sRHo9-8" title="YouTube video player" id="video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="bloc">
+        {% block imagec %}
+        <h1 id="confiture" style="background-image: url('{{ asset('assets/img/confiture.jpg') }}')">
+        {% endblock %}
+        Confitures</h1>
+        {% block imageg %}
+        <h1 id="glace" style="background-image: url('{{ asset('assets/img/glace3.jpg') }}')">
+        {% endblock %}
+        Glaces</h1>
+        {% block imagega %}
+        <h1 id="gateau" style="background-image: url('{{ asset('assets/img/gateau2.jpg') }}')">
+        {% endblock %}
+        Gâteaux</h1>
+        {% block imagey %}
+        <h1 id="yaourt" style="background-image: url('{{ asset('assets/img/yaourt2.jpg') }}')">
+        {% endblock %}
+        Yaourts</h1>
+    </div>
+        
+</main>
+
+{% endblock %}
