@@ -24,20 +24,20 @@ class RecetteType extends AbstractType
             ->add('tempsTotal', IntegerType::class, [
                 'label' => 'Temps total (min)',
                 'attr' => [
-                    'max' => 3,
+                    'max' => 300,
                 ],
             ])
             ->add('tempsPreparation', IntegerType::class, [
                 'label' => 'Temps de préparation (min)',
                 'attr' => [
-                    'max' => 3,
+                    'max' => 300,
                 ],
             ])
             ->add('tempsCuisson', IntegerType::class, [
                 'label' => 'Temps de cuisson (min)',
                 'required' => false,
                 'attr' => [
-                    'max' => 3,
+                    'max' => 300,
                 ],
             ])
             ->add('instruction', CKEditorType::class, [
