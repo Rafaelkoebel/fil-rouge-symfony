@@ -20,6 +20,9 @@
   main #video {
     display: none;
   }
+  #rouge{
+    min-height: 500px;
+  }
 }
 
 @font-face {
@@ -30,9 +33,36 @@
   font-style: normal;
 }
 
-/* #rouge{
-  min-height: 1000px;
-} */
+#card{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
+  /* height: 2000px; */
+  /* flex-direction: row; */
+}
+
+#recettedetail{
+  color: #d8d8d8;
+}
+
+#recettedetail ul{
+  display: flex;
+  justify-content: space-around;
+  font-weight: bold;
+}
+
+#recettedetail h1, #recettedetail h2{
+  text-decoration: underline;
+}
+
+#instructions{
+  margin: 30px;
+}
+
+#publication{
+  font-style: italic;
+}
+
 
 #sommes{
   display: flex;
@@ -73,9 +103,14 @@ legend{
   -webkit-text-stroke: 1px black;
 }
 
+#rouge{
+  min-height: 1440px;
+}
+
 
 #main{
   height: 841px;
+  /* min-height: 4000px; */
   text-align: center;
   color: white;
   font-size: 40px;
@@ -83,6 +118,7 @@ legend{
 
 
 .footer{
+  background-color: black;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -92,6 +128,7 @@ legend{
 }
 
 footer {
+  000
   height: 87px;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
@@ -105,8 +142,18 @@ footer {
           align-items: center;
 }
 
+
+
 #confiture, #glace, #gateau, #yaourt {
   height: 150px;
+  min-width: 2000px;
+  
+}
+
+.bloc{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #contact, #infos{
@@ -129,7 +176,10 @@ footer {
 }
 
 
-
+a:link, a:visited,  a:hover, a:active{
+  color: black;
+  text-decoration: none;
+}
 
 * {
   font-family: 'rudaregular',Arial, Helvetica, sans-serif;

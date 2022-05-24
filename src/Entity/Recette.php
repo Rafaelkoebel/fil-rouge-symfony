@@ -23,7 +23,7 @@ class Recette
     #[ORM\Column(type: 'integer')]
     private $tempsPreparation;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'integer', nullable: true)]
     private $tempsCuisson;
 
     #[ORM\Column(type: 'text')]

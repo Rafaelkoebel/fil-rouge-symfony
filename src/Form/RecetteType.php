@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Recette;
 use App\Entity\Categorie;
 use Symfony\Component\Form\AbstractType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -12,7 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\RangeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+//use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class RecetteType extends AbstractType
 {
@@ -20,10 +21,28 @@ class RecetteType extends AbstractType
     {
         $builder
             ->add('titre', TextType::class)
-            ->add('tempsTotal', IntegerType::class)
-            ->add('tempsPreparation', IntegerType::class)
-            ->add('tempsCuisson', IntegerType::class)
-            ->add('instruction', TextareaType::class)
+            ->add('tempsTotal', IntegerType::class, [
+                'label' => 'Temps total (min)',
+                'attr' => [
+                    'max' => 3,
+                ],
+            ])
+            ->add('tempsPreparation', IntegerType::class, [
+                'label' => 'Temps de préparation (min)',
+                'attr' => [
+                    'max' => 3,
+                ],
+            ])
+            ->add('tempsCuisson', IntegerType::class, [
+                'label' => 'Temps de cuisson (min)',
+                'required' => false,
+                'attr' => [
+                    'max' => 3,
+                ],
+            ])
+            ->add('instruction', CKEditorType::class, [
+                'label' => 'Instructions'
+            ])
             ->add('image', TextType::class)
             ->add('difficulte', RangeType::class, [
                 'attr' => [

@@ -39,6 +39,50 @@ class RecetteRepository extends ServiceEntityRepository
         }
     }
 
+    public function findLastPostsconfiture(int $nb = 10)
+    {
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.categorie = 3')
+            ->orderBy('r.date_publication', 'DESC')
+            ->setMaxResults($nb)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findLastPostsglace(int $nb = 10)
+    {
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.categorie = 4')
+            ->orderBy('r.date_publication', 'DESC')
+            ->setMaxResults($nb)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findLastPostsgateau(int $nb = 10)
+    {
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.categorie = 5')
+            ->orderBy('r.date_publication', 'DESC')
+            ->setMaxResults($nb)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findLastPostsyaourt(int $nb = 10)
+    {
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.categorie = 6')
+            ->orderBy('r.date_publication', 'DESC')
+            ->setMaxResults($nb)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 //    /**
 //     * @return Recette[] Returns an array of Recette objects
 //     */
