@@ -43,9 +43,13 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'utilisateur', targetEntity: Recette::class)]
     private $recettes;
 
+    #[ORM\OneToMany(mappedBy: 'utilisateur', targetEntity: Sujet::class, orphanRemoval: true)]
+    private $sujets;
+
     public function __construct()
     {
         $this->recettes = new ArrayCollection();
+        $this->sujets = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -209,6 +213,36 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($recette->getUtilisateur() === $this) {
                 $recette->setUtilisateur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Sujet>
+     */
+    public function getSujets(): Collection
+    {
+        return $this->sujets;
+    }
+
+    public function addSujet(Sujet $sujet): self
+    {
+        if (!$this->sujets->contains($sujet)) {
+            $this->sujets[] = $sujet;
+            $sujet->setUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSujet(Sujet $sujet): self
+    {
+        if ($this->sujets->removeElement($sujet)) {
+            // set the owning side to null (unless already changed)
+            if ($sujet->getUtilisateur() === $this) {
+                $sujet->setUtilisateur(null);
             }
         }
 

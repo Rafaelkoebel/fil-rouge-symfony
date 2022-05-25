@@ -24,7 +24,7 @@
     <div id="publication">
         Posté par
         {{recette.utilisateur.email}} <br>
-        Le {{recette.DatePublication | date}} <br>
+        Le {{recette.DatePublication | format_datetime( locale='fr',pattern="dd MMMM YYYY")}} <br>
         Classé dans la catégorie : {{recette.categorie.nom}}
     </div>
     

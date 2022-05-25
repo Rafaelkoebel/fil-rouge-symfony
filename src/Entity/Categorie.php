@@ -24,6 +24,9 @@ class Categorie
     #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Recette::class)]
     private $recettes;
 
+    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Sujet::class, orphanRemoval: true)]
+    private $sujets;
+
 
     public function __toString()
     {
@@ -33,6 +36,7 @@ class Categorie
     public function __construct()
     {
         $this->recettes = new ArrayCollection();
+        $this->sujets = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -88,6 +92,36 @@ class Categorie
             // set the owning side to null (unless already changed)
             if ($recette->getCategorie() === $this) {
                 $recette->setCategorie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Sujet>
+     */
+    public function getSujets(): Collection
+    {
+        return $this->sujets;
+    }
+
+    public function addSujet(Sujet $sujet): self
+    {
+        if (!$this->sujets->contains($sujet)) {
+            $this->sujets[] = $sujet;
+            $sujet->setCategorie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSujet(Sujet $sujet): self
+    {
+        if ($this->sujets->removeElement($sujet)) {
+            // set the owning side to null (unless already changed)
+            if ($sujet->getCategorie() === $this) {
+                $sujet->setCategorie(null);
             }
         }
 

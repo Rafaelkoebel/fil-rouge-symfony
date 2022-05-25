@@ -1,0 +1,41 @@
+<?php
+
+namespace App\Form;
+
+use App\Entity\Sujet;
+use App\Entity\Categorie;
+use Doctrine\ORM\EntityRepository;
+// use App\Repository\CategorieRepository;
+use Symfony\Component\Form\AbstractType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
+class SujetType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options): void
+    {
+        $builder
+            ->add('titre', TextType::class)
+            // ->add('slug')
+            ->add('contenu', CKEditorType::class)
+            //->add('date_publication')
+            //->add('utilisateur')
+            ->add('categorie', EntityType::class, [
+                'class' => Categorie::class,
+            ])
+
+            ->add('Valider', SubmitType::class)
+        ;
+    }
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'data_class' => Sujet::class,
+        ]);
+    }
+}
