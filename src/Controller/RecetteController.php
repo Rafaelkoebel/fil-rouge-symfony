@@ -70,7 +70,7 @@ class RecetteController extends AbstractController
         ]);
     }
 
-    #[Route('/{titre}', name: 'view')]
+    #[Route('/{slug}', name: 'view')]
     public function recetteid(Recette $recette): Response
     {
         return $this->render('recette/view.html.twig', [

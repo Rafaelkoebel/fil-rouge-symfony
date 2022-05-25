@@ -1,12 +1,12 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Confitures{% endblock %}
+{% block title %}Confiture{% endblock %}
 
 {% block body %}
 <div id="card">
 {% for recette in recettes %}
 
-    <a href="{{ path('app_recette_view', {titre: recette.titre}) }}" class="card-link">
+    <a href="{{ path('app_recette_view', {slug: recette.slug}) }}" class="card-link">
         <div class="card m-3" style="width: 15rem; ">
             <img src="{{ recette.image }}" class="card-img-top" alt="" style="width: 100%">
             <div class="card-body">
@@ -15,7 +15,7 @@
             </div>
     </a>
             <ul class="list-group list-group-flush">
-            <li class="list-group-item">{{recette.DatePublication | date}}</li>
+            <li class="list-group-item">{{recette.DatePublication | format_datetime( locale='fr',pattern="EEEE dd MMMM YYYY HH : MM") }}</li>
             </ul>
             <div class="card-body"></div>
         </div>

@@ -27,6 +27,7 @@ class RecetteType extends AbstractType
                     'max' => 300,
                 ],
             ])
+            // ->add('slug')
             ->add('tempsPreparation', IntegerType::class, [
                 'label' => 'Temps de préparation (min)',
                 'attr' => [

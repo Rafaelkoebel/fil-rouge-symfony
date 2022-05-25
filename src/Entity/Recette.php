@@ -17,6 +17,12 @@ class Recette
     #[ORM\Column(type: 'string', length: 50)]
     private $titre;
 
+    /**
+    * @gedmo\Slug(fields={"titre"})
+    */
+    #[ORM\Column(type: 'string', length: 255)]
+    private $slug;
+
     #[ORM\Column(type: 'integer')]
     private $tempsTotal;
 
@@ -48,6 +54,7 @@ class Recette
     #[ORM\ManyToOne(targetEntity: Categorie::class, inversedBy: 'recettes')]
     #[ORM\JoinColumn(nullable: false)]
     private $categorie;
+
 
     public function getId(): ?int
     {
@@ -173,4 +180,16 @@ class Recette
 
         return $this;
     }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    // public function setSlug(string $slug): self
+    // {
+    //     $this->slug = $slug;
+
+    //     return $this;
+    // }
 }
