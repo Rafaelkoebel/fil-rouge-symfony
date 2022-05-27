@@ -16,13 +16,4 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
         ]);
     }
-
-    #[Route('/', name: 'home')]
-    public function categorie(CategorieRepository $categorieRepository): Response
-    {
-        $types = $categorieRepository->categorietype();
-        return $this->render('home/index.html.twig', [
-            'types' => $types,
-        ]);
-    }
 }

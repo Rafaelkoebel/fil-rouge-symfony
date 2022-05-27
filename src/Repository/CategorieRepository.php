@@ -39,14 +39,15 @@ class CategorieRepository extends ServiceEntityRepository
         }
     }
 
-    public function categorietype()
+
+    public function categorietype($type)
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.type = 2')
-            ->getQuery()
-            ->getResult()
+            ->where('c.type = :type')
+            ->setParameter('type', $type)
         ;
     }
+
 
 //    /**
 //     * @return Categorie[] Returns an array of Categorie objects

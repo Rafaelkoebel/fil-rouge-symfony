@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Recette;
 use App\Entity\Categorie;
+use App\Repository\CategorieRepository;
 use Symfony\Component\Form\AbstractType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -19,6 +20,8 @@ class RecetteType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        $type = 1;
+
         $builder
             ->add('titre', TextType::class)
             ->add('tempsTotal', IntegerType::class, [
@@ -54,7 +57,10 @@ class RecetteType extends AbstractType
             //->add('date_publication')
             //->add('utilisateur')
             ->add('categorie', EntityType::class, [
-                'class' => Categorie::class
+                'class' => Categorie::class,
+                'query_builder' => function(CategorieRepository $repository) use($type) {
+                    return $repository->categorietype($type);
+                }
             ])
             ->add('Valider', SubmitType::class)
         ;
@@ -62,6 +68,7 @@ class RecetteType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver): void
     {
+        $resolver->setRequired('type');
         $resolver->setDefaults([
             'data_class' => Recette::class,
         ]);

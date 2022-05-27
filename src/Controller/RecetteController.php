@@ -53,8 +53,9 @@ class RecetteController extends AbstractController
     #[Route('/add', name: 'add')]
     public function addRecette(Request $request, ManagerRegistry $doctrine): Response
     {
+        $type=$request->query->get('type');
         $recette = new Recette();
-        $form = $this->createForm(RecetteType::class, $recette);
+        $form = $this->createForm(RecetteType::class, $recette, ['type' => $type]);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

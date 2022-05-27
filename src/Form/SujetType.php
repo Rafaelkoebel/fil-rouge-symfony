@@ -4,8 +4,7 @@ namespace App\Form;
 
 use App\Entity\Sujet;
 use App\Entity\Categorie;
-use Doctrine\ORM\EntityRepository;
-// use App\Repository\CategorieRepository;
+use App\Repository\CategorieRepository;
 use Symfony\Component\Form\AbstractType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,6 +17,8 @@ class SujetType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        $type = 2;
+
         $builder
             ->add('titre', TextType::class)
             // ->add('slug')
@@ -26,6 +27,9 @@ class SujetType extends AbstractType
             //->add('utilisateur')
             ->add('categorie', EntityType::class, [
                 'class' => Categorie::class,
+                'query_builder' => function(CategorieRepository $repository) use($type) {
+                    return $repository->categorietype($type);
+                }
             ])
 
             ->add('Valider', SubmitType::class)
@@ -34,6 +38,7 @@ class SujetType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver): void
     {
+        $resolver->setRequired('type');
         $resolver->setDefaults([
             'data_class' => Sujet::class,
         ]);

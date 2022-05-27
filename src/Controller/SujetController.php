@@ -16,8 +16,9 @@ class SujetController extends AbstractController
     #[Route('/add', name: 'add')]
     public function addSujet(Request $request, ManagerRegistry $doctrine): Response
     {
+        $type=$request->query->get('type');
         $sujet = new Sujet();
-        $form = $this->createForm(SujetType::class, $sujet);
+        $form = $this->createForm(SujetType::class, $sujet, ['type' => $type]);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
