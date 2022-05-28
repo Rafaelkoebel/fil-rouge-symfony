@@ -39,6 +39,16 @@ class SujetRepository extends ServiceEntityRepository
         }
     }
 
+    public function findLastPostssujet(int $nb = 10)
+    {
+        return $this->createQueryBuilder('s')
+            ->orderBy('s.date_publication', 'DESC')
+            ->setMaxResults($nb)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 //    /**
 //     * @return Sujet[] Returns an array of Sujet objects
 //     */

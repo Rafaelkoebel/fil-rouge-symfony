@@ -33,12 +33,25 @@
   font-style: normal;
 }
 
+#card2{
+  
+  /* 
+  
+  flex-direction: column;
+  align-items: center; */
+}
+
+#contenu{
+  background-color: #1c192347;
+  border-radius: 10px;
+  margin: 50px;
+  padding: 20px;
+}
+
 #card{
   display: flex;
   flex-wrap: wrap;
   margin: 20px;
-  /* height: 2000px; */
-  /* flex-direction: row; */
 }
 
 #recettedetail{
@@ -56,7 +69,10 @@
 }
 
 #instructions{
-  margin: 30px;
+  background-color: #1c192347;
+  border-radius: 10px;
+  margin: 50px;
+  padding: 20px;
 }
 
 #publication{

@@ -1,0 +1,25 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{{sujet.titre}}{% endblock %}
+
+{% block body %}
+<div id="recettedetail">
+    <h1>{{sujet.titre}}</h1>
+
+    <div id="contenu">
+         {{sujet.contenu | raw}}
+    </div>
+
+    <hr>
+
+    <div id="publication">
+        Posté par
+        {{sujet.utilisateur.email}} <br>
+        Le {{sujet.DatePublication | format_datetime( locale='fr',pattern="dd MMMM YYYY")}} <br>
+        Classé dans la catégorie : {{sujet.categorie.nom}}
+    </div>
+    
+</div>
+                        
+                            
+{% endblock %}

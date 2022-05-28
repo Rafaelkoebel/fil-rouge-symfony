@@ -1,0 +1,25 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Forum{% endblock %}
+
+{% block body %}
+
+<div id="card2">
+    {% for sujet in sujets %}
+        <a href="{{ path('app_sujet_view', {slug: sujet.slug}) }}" class="card-link">
+            <div class="card"  style="margin:20px;">
+                <div class="card-body">
+                    <h1>{{sujet.titre}}</h1>
+                    <div>{{sujet.contenu | u.truncate(200, '...')  | raw}}</div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">{{sujet.DatePublication | format_datetime( locale='fr',pattern="dd MMMM YYYY HH:mm") }}</li>
+                    </ul>
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+</div>
+
+
+
+{% endblock %}

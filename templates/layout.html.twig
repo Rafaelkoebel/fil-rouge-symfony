@@ -37,6 +37,9 @@
                 <a href="{{ path('app_recette_add') }}">
                     <li>Proposer une recette</li>
                 </a>
+                <a href="{{ path('app_sujet_add') }}">
+                    <li>Nouveau sujet</li>
+                </a>
                 {# <a href="{{ path('app_saisons') }}">
                     <li>Saisons</li>
                 </a>
@@ -68,6 +71,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('app_recette_add') }}">Proposer une recette</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_sujet_add') }}">Nouveau sujet</a>
+            </li>
     {% endif %}
             {# <li class="nav-item">
                 <a class="nav-link" >Saisons</a>
@@ -95,7 +101,7 @@
                         <span class="iconify" id="logo_contact"data-icon="fluent:contact-card-32-filled" style="color: black;"></span>
                     </a>
                 </div>
-                <a id="sommes" >Qui sommes nous ?</a>
+                <a id="sommes" href="{{ path('app_sujet_forum') }}">Forum</a>
                 {# href="{{ path('app_infos') }}" #}
                 <div class="infos">
                     {# <a href="{{ path('app_infos') }}" title="Informations"> #}
