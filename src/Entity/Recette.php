@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Gedmo\Mapping\Annotation as Gedmo;
 use App\Repository\RecetteRepository;
 use Doctrine\ORM\Mapping as ORM;
@@ -54,6 +56,14 @@ class Recette
     #[ORM\ManyToOne(targetEntity: Categorie::class, inversedBy: 'recettes')]
     #[ORM\JoinColumn(nullable: false)]
     private $categorie;
+
+    #[ORM\OneToMany(mappedBy: 'recette', targetEntity: Commentaire::class, orphanRemoval: true)]
+    private $commentaires;
+
+    public function __construct()
+    {
+        $this->commentaires = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -192,4 +202,34 @@ class Recette
 
     //     return $this;
     // }
+
+    /**
+     * @return Collection<int, Commentaire>
+     */
+    public function getCommentaires(): Collection
+    {
+        return $this->commentaires;
+    }
+
+    public function addCommentaire(Commentaire $commentaire): self
+    {
+        if (!$this->commentaires->contains($commentaire)) {
+            $this->commentaires[] = $commentaire;
+            $commentaire->setRecette($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaire(Commentaire $commentaire): self
+    {
+        if ($this->commentaires->removeElement($commentaire)) {
+            // set the owning side to null (unless already changed)
+            if ($commentaire->getRecette() === $this) {
+                $commentaire->setRecette(null);
+            }
+        }
+
+        return $this;
+    }
 }

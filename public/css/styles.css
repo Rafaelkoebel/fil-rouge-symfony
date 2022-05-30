@@ -33,13 +33,28 @@
   font-style: normal;
 }
 
-#card2{
-  
-  /* 
-  
-  flex-direction: column;
-  align-items: center; */
+#comms2 {
+  display: flex;
+  justify-content: center;
 }
+
+#comms{
+  color: rgb(201, 201, 201);
+  background-color: rgba(0, 0, 0, 0.519);
+  border-radius: 10px;
+  width: 50%;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#datecomms{
+  font-size: 1em ;
+  font-style: italic;
+}
+
 
 #contenu{
   background-color: #1c192347;

@@ -4,6 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Sujet;
 use App\Form\SujetType;
+use App\Entity\Commentaire;
+use App\Form\CommentaireType;
+//use App\Repository\CommentaireRepository;
 use App\Repository\SujetRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
@@ -45,9 +48,25 @@ class SujetController extends AbstractController
     }
 
     #[Route('/{slug}', name: 'view')]
-    public function recetteid(Sujet $sujet): Response
+    public function sujetid(Sujet $sujet, Request $request, ManagerRegistry $doctrine): Response
     {
+        $commentaire = new Commentaire();
+        $form = $this->createForm(CommentaireType::class, $commentaire);
+        
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $commentaire->setUtilisateur($this->getUser());
+            $commentaire->setSujet($sujet);
+            $commentaire->setType(2);
+            $em = $doctrine->getManager();
+            $em->persist($commentaire);
+            $em->flush();
+            return $this->redirectToRoute('app_sujet_view', array('slug' => $sujet->getSlug()));
+        }
+
         return $this->render('sujet/view.html.twig', [
+            'form' => $form->createView(),
+            'commentaire' => $commentaire,
             'sujet' => $sujet
         ]);
     }

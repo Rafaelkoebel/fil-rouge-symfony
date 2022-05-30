@@ -20,6 +20,19 @@
     </div>
     
 </div>
+
+{% for commentaire in sujet.commentaires %}
+<div id="comms2">
+    <div id="comms">
+        <p>{{commentaire.contenu}}</p>
+        <p id="datecomms">Le {{commentaire.DateCommentaire | format_datetime( locale='fr',pattern="dd MMMM YYYY")}}</p>
+     </div>
+</div>
+
+
+{% endfor %}
+
+{{form(form)}}
                         
                             
 {% endblock %}
