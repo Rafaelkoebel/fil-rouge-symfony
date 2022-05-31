@@ -4,11 +4,12 @@
 
 {% block body %}
 
+{% for sujet in sujets %}
 <div id="card2">
-    {% for sujet in sujets %}
+    <div id="souscard">
         <a href="{{ path('app_sujet_view', {slug: sujet.slug}) }}" class="card-link">
             <div class="card"  style="margin:20px;">
-                <div class="card-body">
+                <div class="card-body" style="">
                     <h1>{{sujet.titre}}</h1>
                     <div>{{sujet.contenu | u.truncate(200, '...')  | raw}}</div>
                     <ul class="list-group list-group-flush">
@@ -17,8 +18,9 @@
                 </div>
             </div>
         </a>
-    {% endfor %}
+    </div>
 </div>
+{% endfor %}
 
 
 

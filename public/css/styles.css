@@ -33,7 +33,22 @@
   font-style: normal;
 }
 
-#comms2 {
+#icone2{
+  color: black;
+  margin-right: 8px;
+
+}
+
+#icone{
+  color: black;
+  border: 1px black solid;
+}
+
+#souscard{
+  width: 70%;
+}
+
+#comms2, #card2 {
   display: flex;
   justify-content: center;
 }
@@ -176,7 +191,7 @@ footer {
 
 #confiture, #glace, #gateau, #yaourt {
   height: 150px;
-  min-width: 2000px;
+  min-width: 1000px;
   
 }
 

@@ -30,7 +30,7 @@ class SujetController extends AbstractController
             $em = $doctrine->getManager();
             $em->persist($sujet);
             $em->flush();
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('app_sujet_forum');
         }
 
         return $this->render('sujet/add.html.twig', [

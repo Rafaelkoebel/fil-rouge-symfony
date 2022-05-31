@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Recette;
 use App\Form\RecetteType;
+use App\Entity\Commentaire;
+use App\Form\CommentaireType;
 use App\Repository\RecetteRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
@@ -72,9 +74,24 @@ class RecetteController extends AbstractController
     }
 
     #[Route('/{slug}', name: 'view')]
-    public function recetteid(Recette $recette): Response
+    public function recetteid(Recette $recette, Request $request, ManagerRegistry $doctrine): Response
     {
+        $commentaire = new Commentaire();
+        $form = $this->createForm(CommentaireType::class, $commentaire);
+        
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $commentaire->setUtilisateur($this->getUser());
+            $commentaire->setRecette($recette);
+            $commentaire->setType(1);
+            $em = $doctrine->getManager();
+            $em->persist($commentaire);
+            $em->flush();
+            return $this->redirectToRoute('app_recette_view', array('slug' => $recette->getSlug()));
+        }
         return $this->render('recette/view.html.twig', [
+            'form' => $form->createView(),
+            'commentaire' => $commentaire,
             'recette' => $recette
         ]);
     }
