@@ -49,6 +49,17 @@ class SujetRepository extends ServiceEntityRepository
         ;
     }
 
+    public function messujets($utilisateur)
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.utilisateur = :utilisateur_id')
+            ->orderBy('s.date_publication', 'DESC')
+            ->setParameter('utilisateur_id', $utilisateur)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 //    /**
 //     * @return Sujet[] Returns an array of Sujet objects
 //     */

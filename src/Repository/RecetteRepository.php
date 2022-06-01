@@ -83,6 +83,17 @@ class RecetteRepository extends ServiceEntityRepository
         ;
     }
 
+    public function mesrecettes($utilisateur)
+    {
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.utilisateur = :utilisateur_id')
+            ->orderBy('r.date_publication', 'DESC')
+            ->setParameter('utilisateur_id', $utilisateur)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 //    /**
 //     * @return Recette[] Returns an array of Recette objects
 //     */

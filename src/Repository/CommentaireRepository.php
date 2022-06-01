@@ -39,6 +39,30 @@ class CommentaireRepository extends ServiceEntityRepository
         }
     }
 
+    public function mescommentairesrecette($utilisateur)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.utilisateur = :utilisateur_id')
+            ->andWhere('c.recette IS NOT NULL')
+            ->orderBy('c.date_commentaire', 'DESC')
+            ->setParameter('utilisateur_id', $utilisateur)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function mescommentairessujet($utilisateur)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.utilisateur = :utilisateur_id')
+            ->andWhere('c.sujet IS NOT NULL')
+            ->orderBy('c.date_commentaire', 'DESC')
+            ->setParameter('utilisateur_id', $utilisateur)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // public function findLastPostscommentaire(int $nb = 10)
     // {
     //     return $this->createQueryBuilder('c')

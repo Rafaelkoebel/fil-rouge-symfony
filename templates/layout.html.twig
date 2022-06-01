@@ -64,8 +64,8 @@
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li style="color:blue; text-decoration:underline;">{{ app.user.email }}</li>
                     <li><a class="dropdown-item" href="{{ path('app_compte_recette') }}">Mes recettes</a></li>
-                    <li><a class="dropdown-item" href="#">Mes sujets </a></li>
-                    <li><a class="dropdown-item" href="#">Mes commentaires</a></li>
+                    <li><a class="dropdown-item" href="{{ path('app_compte_sujet') }}">Mes sujets </a></li>
+                    <li><a class="dropdown-item" href="{{ path('app_compte_commentaire') }}">Mes commentaires</a></li>
                 </ul>
             </div>
             {% else %}

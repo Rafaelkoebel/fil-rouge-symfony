@@ -1,0 +1,42 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Mes commentaires{% endblock %}
+
+{% block body %}
+<div id="table">
+    <table>
+        <thead>
+            <tr>
+                <th>Mes commentaires de recettes</th>
+                <th>Mes commentaires de sujets</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="td1">
+                    {% for commentaire in commentaires %}
+                    <div id="comms2">
+                        <div id="comms">
+                            <p>{{commentaire.contenu}}</p>
+                            <p id="datecomms">Le {{commentaire.DateCommentaire | format_datetime( locale='fr',pattern="dd MMMM YYYY")}}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </td>
+                <td id="td2">
+                    {% for commentaire in commentaires2 %}
+                    <div id="comms2">
+                        <div id="comms">
+                            <p>{{commentaire.contenu}}</p>
+                            <p id="datecomms">Le {{commentaire.DateCommentaire | format_datetime( locale='fr',pattern="dd MMMM YYYY")}}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}
