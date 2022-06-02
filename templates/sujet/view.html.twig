@@ -26,6 +26,9 @@
     <div id="comms">
         <p>{{commentaire.contenu}}</p>
         <p id="datecomms">Le {{commentaire.DateCommentaire | format_datetime( locale='fr',pattern="dd MMMM YYYY")}}</p>
+     {% if is_granted("ROLE_USER") and commentaire.utilisateur.id == app.user.id %}
+    <a href="{{ path('app_sujet_commentaire_delete', {id: commentaire.id}) }}" class="btn btn-danger btn-sm" onclick="return confirm('Suppression ?')">Supprimer</a>
+    {% endif %}
      </div>
 </div>
 {% endfor %}

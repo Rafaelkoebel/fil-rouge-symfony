@@ -3,6 +3,8 @@
 {% block title %}Mes commentaires{% endblock %}
 
 {% block body %}
+
+
 <div id="table">
     <table>
         <thead>
@@ -19,6 +21,7 @@
                         <div id="comms">
                             <p>{{commentaire.contenu}}</p>
                             <p id="datecomms">Le {{commentaire.DateCommentaire | format_datetime( locale='fr',pattern="dd MMMM YYYY")}}</p>
+                            <a href="{{ path('app_compte_commentaire_delete', {id: commentaire.id}) }}" class="btn btn-danger btn-sm" onclick="return confirm('Suppression ?')">Supprimer</a>
                         </div>
                     </div>
                     {% endfor %}
@@ -29,6 +32,7 @@
                         <div id="comms">
                             <p>{{commentaire.contenu}}</p>
                             <p id="datecomms">Le {{commentaire.DateCommentaire | format_datetime( locale='fr',pattern="dd MMMM YYYY")}}</p>
+                            <a href="{{ path('app_compte_commentaire_delete', {id: commentaire.id}) }}" class="btn btn-danger btn-sm" onclick="return confirm('Suppression ?')">Supprimer</a>
                         </div>
                     </div>
                     {% endfor %}
@@ -38,5 +42,12 @@
     </table>
 </div>
 
+{# {% block img %} #}
+
+{# <div><img src="{{ asset('confiture.jpg') }}"/></div> #}
+{# <div> <a href="{{ asset('public/assets/img/confiture.jpg') }}"></a></div> #}
+{# <img src="{{ asset('public/assets/img/confiture.jpg') }}" alt="" />  #}
+
+{# {% endblock %} #}
 
 {% endblock %}

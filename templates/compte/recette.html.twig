@@ -21,6 +21,7 @@
                 <ul class="list-group list-group-flush">
                 <li class="list-group-item">{{recette.DatePublication | format_datetime( locale='fr',pattern="dd MMMM YYYY HH:mm") }}</li>
                 </ul>
+                <a href="{{ path('app_compte_recette_delete', {id: recette.id}) }}" class="btn btn-danger btn-sm" onclick="return confirm('Suppression ?')">Supprimer</a>
             </div>
     
     {% endfor %}

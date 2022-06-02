@@ -70,4 +70,24 @@ class SujetController extends AbstractController
             'sujet' => $sujet
         ]);
     }
+
+    #[Route('/delete/{id}', name: 'delete')]
+    public function deletesujet(Sujet $sujet, ManagerRegistry $doctrine): Response
+    {
+        $em = $doctrine->getManager();
+        $em->remove($sujet);
+        $em->flush();
+        // $this->addFlash('success', 'Post supprimé !');
+        return $this->redirectToRoute('app_sujet_forum');
+    }
+
+    #[Route('/commentaire/delete/{id}', name: 'commentaire_delete')]
+    public function deletecommentaire(Commentaire $commentaire, ManagerRegistry $doctrine): Response
+    {
+        $em = $doctrine->getManager();
+        $em->remove($commentaire);
+        $em->flush();
+        // $this->addFlash('success', 'Post supprimé !');
+        return $this->redirectToRoute('app_sujet_forum');
+    }
 }

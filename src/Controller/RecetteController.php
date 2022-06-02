@@ -95,4 +95,14 @@ class RecetteController extends AbstractController
             'recette' => $recette
         ]);
     }
+
+    #[Route('/delete/{id}', name: 'delete')]
+    public function deleterecette(Recette $recette, ManagerRegistry $doctrine): Response
+    {
+        $em = $doctrine->getManager();
+        $em->remove($recette);
+        $em->flush();
+        // $this->addFlash('success', 'Post supprimé !');
+        return $this->redirectToRoute('home');
+    }
 }
