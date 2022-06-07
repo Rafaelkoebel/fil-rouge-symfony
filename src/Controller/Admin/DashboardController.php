@@ -45,13 +45,23 @@ class DashboardController extends AbstractDashboardController
             ->setTitle('Fil Rouge Symfony');
     }
 
+//     public function configureMenuItems(): iterable
+// {
+//     return [
+
+//         MenuItem::linkToCrud('Blog Posts', null, Utilisateur::class)
+//             ->setPermission('ROLE_EDITOR'),
+//     ];
+// }
+
     public function configureMenuItems(): iterable
     {
         // yield MenuItem::linkToDashboard('Front-Office', 'fa fa-home');
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Recettes', 'fas fa-list', Recette::class);
         yield MenuItem::linkToCrud('Catégories', 'fas fa-list', Categorie::class);
-        yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-list', Utilisateur::class);
+        yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-list', Utilisateur::class)
+        ->setPermission('ROLE_ADMIN');
         yield MenuItem::linkToCrud('Sujets', 'fas fa-list', Sujet::class);
         yield MenuItem::linkToCrud('Commentaires', 'fas fa-list', Commentaire::class);
     }

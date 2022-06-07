@@ -38,6 +38,12 @@ class Commentaire
     #[ORM\JoinColumn(nullable: true)]
     private $sujet;
 
+    /**
+     * @Gedmo\Timestampable(on="update")
+     */
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private $date_moderation;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -111,6 +117,18 @@ class Commentaire
     public function setSujet(?Sujet $sujet): self
     {
         $this->sujet = $sujet;
+
+        return $this;
+    }
+
+    public function getDateModeration(): ?\DateTimeInterface
+    {
+        return $this->date_moderation;
+    }
+
+    public function setDateModeration(?\DateTimeInterface $date_moderation): self
+    {
+        $this->date_moderation = $date_moderation;
 
         return $this;
     }

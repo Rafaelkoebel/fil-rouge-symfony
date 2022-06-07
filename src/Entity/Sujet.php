@@ -45,6 +45,17 @@ class Sujet
     #[ORM\OneToMany(mappedBy: 'sujet', targetEntity: Commentaire::class, orphanRemoval: true)]
     private $commentaires;
 
+    /**
+     * @Gedmo\Timestampable(on="update")
+     */
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private $date_moderation;
+
+    public function __toString()
+    {
+        return $this->titre;
+    }
+
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
@@ -153,6 +164,18 @@ class Sujet
                 $commentaire->setSujet(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDateModeration(): ?\DateTimeInterface
+    {
+        return $this->date_moderation;
+    }
+
+    public function setDateModeration(?\DateTimeInterface $date_moderation): self
+    {
+        $this->date_moderation = $date_moderation;
 
         return $this;
     }

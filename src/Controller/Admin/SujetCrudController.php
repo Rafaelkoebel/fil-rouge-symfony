@@ -3,6 +3,9 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Sujet;
+use App\Entity\Categorie;
+use App\Repository\CategorieRepository;
+use Doctrine\ORM\QueryBuilder;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -19,6 +22,14 @@ class SujetCrudController extends AbstractCrudController
         return Sujet::class;
     }
 
+    public function createEntity(string $entityFqcn)
+    {
+        $sujet = new Sujet();
+        $sujet->setUtilisateur($this->getUser());
+
+        return $sujet;
+    }
+
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
@@ -30,14 +41,20 @@ class SujetCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
+        $type = 2;
         return [
             IdField::new('id')->hideOnForm(),
-            AssociationField::new('utilisateur'),
-            AssociationField::new('categorie'),
+            AssociationField::new('utilisateur')->hideOnForm(),
             TextField::new('titre'),
             TextField::new('slug')->hideOnForm(),
+            AssociationField::new('categorie')->setFormTypeOptions([
+                'query_builder' => function(CategorieRepository $repository) use($type) {
+                    return $repository->categorietype($type);
+                }
+            ]),
             TextEditorField::new('contenu')->onlyOnForms()->setFormType(CKEditorType::class),
             DateField::new('date_publication')->hideOnForm(),
+            DateField::new('date_moderation')->hideOnForm(),
         ];
     }
 }

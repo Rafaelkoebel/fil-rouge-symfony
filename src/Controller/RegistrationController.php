@@ -68,6 +68,28 @@ class RegistrationController extends AbstractController
         ]);
     }
 
+
+
+    #[Route('/register/fruiticulteur', name: 'app_register_fruiticulteur')]
+    public function registerfruiticulteur()
+    {
+        // $form->handleRequest($request);
+        // if ($form->isSubmitted() && $form->isValid()) {
+        //     $sujet->setUtilisateur($this->getUser());
+        //     $em = $doctrine->getManager();
+        //     $em->flush();
+        //     return $this->redirectToRoute('app_sujet_forum');
+        // }
+
+        return $this->render('registration/register_fruiticulteur.html.twig', [
+            // 'form' => $form->createView(),
+        ]);
+    }
+
+
+
+
+
     #[Route('/verify/email', name: 'app_verify_email')]
     public function verifyUserEmail(Request $request, TranslatorInterface $translator): Response
     {
