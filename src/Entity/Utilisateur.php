@@ -49,11 +49,15 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'utilisateur', targetEntity: Commentaire::class)]
     private $commentaires;
 
+    #[ORM\OneToMany(mappedBy: 'utilisateur', targetEntity: Vente::class, orphanRemoval: true)]
+    private $ventes;
+
     public function __construct()
     {
         $this->recettes = new ArrayCollection();
         $this->sujets = new ArrayCollection();
         $this->commentaires = new ArrayCollection();
+        $this->ventes = new ArrayCollection();
     }
 
     public function __toString()
@@ -282,6 +286,36 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($commentaire->getUtilisateur() === $this) {
                 $commentaire->setUtilisateur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Vente>
+     */
+    public function getVentes(): Collection
+    {
+        return $this->ventes;
+    }
+
+    public function addVente(Vente $vente): self
+    {
+        if (!$this->ventes->contains($vente)) {
+            $this->ventes[] = $vente;
+            $vente->setUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVente(Vente $vente): self
+    {
+        if ($this->ventes->removeElement($vente)) {
+            // set the owning side to null (unless already changed)
+            if ($vente->getUtilisateur() === $this) {
+                $vente->setUtilisateur(null);
             }
         }
 

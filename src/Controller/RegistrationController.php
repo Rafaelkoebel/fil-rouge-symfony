@@ -3,20 +3,22 @@
 namespace App\Controller;
 
 use App\Entity\Utilisateur;
-use App\Form\RegistrationFormType;
+use App\Form\FruiticulteurType;
 use App\Security\EmailVerifier;
-use App\Security\UtilisateurAuthenticator;
+use App\Form\RegistrationFormType;
+use Symfony\Component\Mime\Address;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
+use App\Security\UtilisateurAuthenticator;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mime\Address;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
+use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 
 class RegistrationController extends AbstractController
 {
@@ -71,18 +73,23 @@ class RegistrationController extends AbstractController
 
 
     #[Route('/register/fruiticulteur', name: 'app_register_fruiticulteur')]
-    public function registerfruiticulteur()
+    public function registerfruiticulteur(Request $request, ManagerRegistry $doctrine)
     {
-        // $form->handleRequest($request);
-        // if ($form->isSubmitted() && $form->isValid()) {
-        //     $sujet->setUtilisateur($this->getUser());
-        //     $em = $doctrine->getManager();
-        //     $em->flush();
-        //     return $this->redirectToRoute('app_sujet_forum');
-        // }
+        // $utilisateurs = new Utilisateur();
+        $utilisateur = $this->getUser('user');
+        $form = $this->createForm(FruiticulteurType::class, $utilisateur);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            // $utilisateurs->setNom('Remi');
+            $em = $doctrine->getManager();
+            $em->flush();
+            return $this->redirectToRoute('home');
+        }
 
         return $this->render('registration/register_fruiticulteur.html.twig', [
-            // 'form' => $form->createView(),
+            'form' => $form->createView(),
+            'utilisateur' => $utilisateur,
+            // 'utilisateures' => $utilisateurs,
         ]);
     }
 

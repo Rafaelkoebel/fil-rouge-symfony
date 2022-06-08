@@ -3,9 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Sujet;
-use App\Entity\Categorie;
 use App\Repository\CategorieRepository;
-use Doctrine\ORM\QueryBuilder;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;

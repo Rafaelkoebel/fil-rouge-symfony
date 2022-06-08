@@ -1,0 +1,30 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Annonces{% endblock %}
+
+{% block body %}
+<div id="card">
+    {% for vente in ventes %}
+    {# {% for produit in produits %} #}
+    
+        {# <a href="{{ path('app_recette_view', {slug: produit.slug}) }}" class="card-link">  #}
+            <div class="card m-3" style="width: 15rem; ">
+                <img src="{{ produit.image }}" class="card-img-top" alt="" style="width: 100%">
+                <div class="card-body">
+                <h5 class="card-title fw-bolder">{{ produit.nom}}</h5>
+                <h5 class="card-title fw-bolder">{{ vente.prix}}</h5> 
+                </div>
+        {# </a>  #}
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{vente.dateVente | format_datetime( locale='fr',pattern="dd MMMM YYYY HH:mm") }}</li>
+                </ul> 
+                {# {% if is_granted("ROLE_USER") and vente.utilisateur.id == app.user.id %}
+                <a href="{{ path('app_vente_delete', {id: vente.id}) }}" class="btn btn-danger btn-sm" onclick="return confirm('Suppression ?')">Supprimer</a>
+                {% endif %} #}
+            </div> 
+    
+    {# {% endfor %} #}
+    {% endfor %}
+</div>
+    
+{% endblock %}

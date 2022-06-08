@@ -2,28 +2,27 @@
 
 namespace App\Form;
 
-use App\Entity\Commentaire;
+use App\Entity\Vente;
+use App\Entity\Produit;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-// use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
-class CommentaireType extends AbstractType
+class VenteType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('contenu', TextareaType::class, [
-                'label' => 'Commentaire :',
-                'attr' => [
-                    'rows' => 5,
-                    'cols' => 100
-                ]
+            ->add('produit', EntityType::class, [
+                'class' => Produit::class
             ])
-            //->add('date_commentaire')
-            //->add('type', IntegerType::class)
+            ->add('prix', IntegerType::class,[
+                'label' => 'Prix(euros)'
+            ])
+            //->add('date_vente')
             //->add('utilisateur')
             ->add('Valider', SubmitType::class)
         ;
@@ -32,7 +31,7 @@ class CommentaireType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Commentaire::class,
+            'data_class' => Vente::class,
         ]);
     }
 }
