@@ -66,6 +66,9 @@
                     <li><a class="dropdown-item" href="{{ path('app_compte_recette') }}">Mes recettes</a></li>
                     <li><a class="dropdown-item" href="{{ path('app_compte_sujet') }}">Mes sujets </a></li>
                     <li><a class="dropdown-item" href="{{ path('app_compte_commentaire') }}">Mes commentaires</a></li>
+                    {% if is_granted("ROLE_FRUITICULTEUR") %}
+                        <li><a class="dropdown-item" href="{{ path('app_compte_annonce') }}">Mes annonces</a></li>
+                    {% endif %}
                 </ul>
             </div>
             {% else %}
@@ -135,7 +138,7 @@
                     </a>
                 </div>
                 <a id="sommes" href="{{ path('app_sujet_forum') }}">Forum</a>
-                {% if is_granted("ROLE_USER") %}
+                {% if is_granted("ROLE_USER") and not is_granted("ROLE_FRUITICULTEUR")%}
                 <a id="sommes" href="{{ path('app_register_fruiticulteur') }}">Vous êtes Fruiticulteur ?</a>
                 {% endif %}
                 {# href="{{ path('app_infos') }}" #}

@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Sujet;
+use App\Entity\Produit;
 use App\Entity\Recette;
 use App\Entity\Categorie;
 use App\Entity\Commentaire;
@@ -62,6 +63,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Recettes', 'fas fa-list', Recette::class);
         yield MenuItem::linkToCrud('Catégories', 'fas fa-list', Categorie::class);
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-list', Utilisateur::class)
+        ->setPermission('ROLE_ADMIN');
+        yield MenuItem::linkToCrud('Produits', 'fas fa-list', Produit::class)
         ->setPermission('ROLE_ADMIN');
         yield MenuItem::linkToCrud('Sujets', 'fas fa-list', Sujet::class);
         yield MenuItem::linkToCrud('Commentaires', 'fas fa-list', Commentaire::class);

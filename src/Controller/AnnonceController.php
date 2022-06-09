@@ -3,10 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Vente;
-use App\Entity\Produit;
 use App\Form\VenteType;
 use App\Repository\VenteRepository;
-use App\Repository\ProduitRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,15 +15,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AnnonceController extends AbstractController
 {
     #[Route('', name: 'apercut')]
-    public function apercut(VenteRepository $venteRepository, Produit $produit): Response
+    public function apercut(VenteRepository $venteRepository): Response
     {
-        // $produit = new Produit();
-        // $ventes = $venteRepository->findAll();
-        // $produits = $produitRepository->findAll();
         $ventes = $venteRepository->findAllAnnonce();
         return $this->render('annonce/apercut.html.twig', [
             'ventes' => $ventes,
-            'produit' => $produit,
         ]);
     }
 
@@ -44,7 +38,7 @@ class AnnonceController extends AbstractController
             $em = $doctrine->getManager();
             $em->persist($vente);
             $em->flush();
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('app_annonce_apercut');
         }
 
         return $this->render('annonce/add.html.twig', [

@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TelephoneField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class UtilisateurCrudController extends AbstractCrudController
@@ -36,7 +37,7 @@ class UtilisateurCrudController extends AbstractCrudController
             ArrayField::new('roles'),
             TextField::new('nom'),
             TextField::new('adresse'),
-            TextField::new('telephone'),
+            TelephoneField::new('telephone'),
             BooleanField::new('is_verified'),
         ];
     }

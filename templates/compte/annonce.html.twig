@@ -1,6 +1,6 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %}Annonces{% endblock %}
+{% block title %}Mes annonces{% endblock %}
 
 {% block body %}
 <div id="card">
@@ -12,7 +12,7 @@
                 <div class="card-body">
                 <h5 class="card-title fw-bolder">{{ vente.produit.nom}}</h5>
                 <h5 class="card-title fw-bolder">Prix : {{ vente.prix}} €</h5> 
-                <h5 class="card-title fw-bolder">Vendu par :{{ vente.utilisateur.email}}</h5> 
+                {# <h5 class="card-title fw-bolder">Vendu par :{{ vente.utilisateur.email}}</h5>  #}
                 </div>
         {# </a>  #}
                 <ul class="list-group list-group-flush">
@@ -26,5 +26,4 @@
     
     {% endfor %}
 </div>
-    
 {% endblock %}

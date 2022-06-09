@@ -71,16 +71,15 @@ class RegistrationController extends AbstractController
     }
 
 
-
     #[Route('/register/fruiticulteur', name: 'app_register_fruiticulteur')]
-    public function registerfruiticulteur(Request $request, ManagerRegistry $doctrine)
+    public function registerfruiticulteur(Request $request, ManagerRegistry $doctrine): Response
     {
-        // $utilisateurs = new Utilisateur();
+        
         $utilisateur = $this->getUser('user');
         $form = $this->createForm(FruiticulteurType::class, $utilisateur);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            // $utilisateurs->setNom('Remi');
+            $utilisateur->setRoles(["ROLE_FRUITICULTEUR"]);
             $em = $doctrine->getManager();
             $em->flush();
             return $this->redirectToRoute('home');
@@ -89,7 +88,6 @@ class RegistrationController extends AbstractController
         return $this->render('registration/register_fruiticulteur.html.twig', [
             'form' => $form->createView(),
             'utilisateur' => $utilisateur,
-            // 'utilisateures' => $utilisateurs,
         ]);
     }
 

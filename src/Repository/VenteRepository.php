@@ -40,20 +40,42 @@ class VenteRepository extends ServiceEntityRepository
         }
     }
 
-    public function findAllAnnonce(): array
+    public function findAllAnnonce()
     {
-        $entityManager = $this->getEntityManager();
-
-        $query = $entityManager->createQuery(
-            'SELECT p.nom
-            FROM App\Entity\Vente v
-            JOIN App\Entity\Produit p
-            WHERE v.produit= p.id
-            ORDER BY v.date_vente DESC'
-        )
+        return $this->createQueryBuilder('v')
+            ->orderBy('v.date_vente', 'DESC')
+            ->getQuery()
+            ->getResult()
         ;
-        return $query->getResult();
     }
+
+    public function mesventes($utilisateur)
+    {
+        return $this->createQueryBuilder('v')
+            ->andWhere('v.utilisateur = :utilisateur_id')
+            ->orderBy('v.date_vente', 'DESC')
+            ->setParameter('utilisateur_id', $utilisateur)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
+
+    // public function findAllAnnonce(): array
+    // {
+    //     $entityManager = $this->getEntityManager();
+
+    //     $query = $entityManager->createQuery(
+    //         'SELECT p.nom
+    //         FROM App\Entity\Vente v
+    //         JOIN App\Entity\Produit p
+    //         WHERE v.produit= p.id
+    //         ORDER BY v.date_vente DESC'
+    //     )
+    //     ;
+    //     return $query->getResult();
+    // }
 
     // public function findAllAnnonce()
     // {

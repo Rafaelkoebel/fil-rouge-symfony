@@ -6,7 +6,6 @@ use App\Entity\Utilisateur;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
@@ -20,7 +19,7 @@ class FruiticulteurType extends AbstractType
             // ->add('password')
             ->add('nom', TextType::class)
             ->add('adresse', TextType::class)
-            ->add('telephone', TelType::class)
+            ->add('telephone', TextType::class)
             //->add('isVerified')
             ->add('Valider', SubmitType::class);
         ;
