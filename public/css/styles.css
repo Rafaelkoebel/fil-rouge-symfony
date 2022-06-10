@@ -141,13 +141,6 @@ tfoot {
   font-style: italic;
 }
 
-
-#sommes{
-  display: flex;
-  align-items: center;
-  font-size: x-large;
-}
-
 #submit{
   font-size: 40px;
   margin-top: 20px;
@@ -195,32 +188,6 @@ legend{
 }
 
 
-.footer{
-  background-color: black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 840px;
-  margin-top: 80px;
-  font-size: 40px;
-}
-
-footer {
-  height: 87px;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-#calc {
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-          align-items: center;
-}
-
-
-
 #confiture, #glace, #gateau, #yaourt {
   height: 150px;
   min-width: 1000px;
@@ -233,11 +200,6 @@ footer {
   align-items: center;
 }
 
-#contact, #infos{
-  display: flex;
-  font-size: 50px;
-  margin-left: 50px;
-}
 
 .article{
   display: flex;
@@ -367,40 +329,31 @@ p {
   font-size: 25px;
 }
 
-footer {
-  background-color: #e5e5e58a;
-  padding-top: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
+
+/* Footer */
+/* --------------------------------------------------------------------------------- */
+.pfooter{
+  font-size: x-large;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+#reseaux{
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: space-evenly;
 }
 
-#calc {
-  display: -webkit-box;
-  display: -ms-flexbox;
+.logo{
+  height: 70px;
+  margin: 30px;
+}
+
+#contactinfos{
   display: flex;
-}
-
-#logo_contact {
-  height: 45px;
-  margin-top: 10px;
-  padding-right: -10px;
-}
-
-#infos {
-  padding-left: 20px;
-}
-
-#logo_infos {
-  height: 40px;
-  margin-top: 18px;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-top: 30px;
 }
 
 .iconify {
@@ -411,4 +364,3 @@ footer {
 a:link {
   text-decoration: none;
 }
-/*# sourceMappingURL=style.css.map */

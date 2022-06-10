@@ -128,27 +128,44 @@
 
         {% block body %}{% endblock %}
         
+    
     </div>
-
-        <footer style="background-color: #b5b5b5;">
+    {% block imagez %}
+    <div style="background-image: url('{{ asset('assets/img/rouge.jpg') }}')">
+    {% endblock %}
+        <footer style="background-color: #b1b1b1a2;">
             <div id="calc"> 
-                <div class="contact">
-                    {# <a href="{{ path('app_contact') }}" title="Contact"> #}
-                        <span class="iconify" id="logo_contact"data-icon="fluent:contact-card-32-filled" style="color: black;"></span>
-                    </a>
-                </div>
-                <a id="sommes" href="{{ path('app_sujet_forum') }}">Forum</a>
+                <div id="contactinfos">
+                    {# <a href="#" title="Contact">
+                        <span class="iconify" data-icon="fluent:contact-card-32-filled" style="color: black;"></span>
+                    </a> #}
+                <a href="{{ path('app_sujet_forum') }}" class="pfooter">Forum</a>
                 {% if is_granted("ROLE_USER") and not is_granted("ROLE_FRUITICULTEUR")%}
-                <a id="sommes" href="{{ path('app_register_fruiticulteur') }}">Vous êtes Fruiticulteur ?</a>
+                    <a href="{{ path('app_register_fruiticulteur') }}" class="pfooter">Vous êtes Fruiticulteur ?</a>
                 {% endif %}
-                {# href="{{ path('app_infos') }}" #}
-                <div class="infos">
-                    {# <a href="{{ path('app_infos') }}" title="Informations"> #}
-                        <span class="iconify" id="logo_infos" data-icon="bi:info-circle-fill" style="color: black;"></span>
+                {# <div class="infos"> #}
+                    {# <a href="#" title="Informations">
+                        <span class="iconify" data-icon="bi:info-circle-fill" style="color: black;"></span>
+                    </a> #}
+                </div>
+                <div id="reseaux">
+                    <a href="#" title="facebook">
+                        <img src="/assets/img/facebook.png" alt="facebook" class="logo">
+                    </a>
+                    <a href="#" title="instagram">
+                        <img src="/assets/img/instagram.png" alt="instagram" class="logo">
+                    </a>
+                    <a href="#" title="twitter">
+                        <img src="/assets/img/twitter.png" alt="twitter" class="logo">
+                    </a>
+                    <a href="#" title="linkedin">
+                        <img src="/assets/img/linkedin.png" alt="linkedin" class="logo">
                     </a>
                 </div>
             </div>
         </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    </div>
 </body>
 </html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
