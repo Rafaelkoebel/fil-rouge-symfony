@@ -19,7 +19,11 @@ class FruiticulteurType extends AbstractType
             // ->add('password')
             ->add('nom', TextType::class)
             ->add('adresse', TextType::class)
-            ->add('telephone', TextType::class)
+            ->add('telephone', TextType::class, [
+                'attr' => [
+                    'placeholder' => '0611223344'
+                ]
+            ])
             //->add('isVerified')
             ->add('Valider', SubmitType::class);
         ;

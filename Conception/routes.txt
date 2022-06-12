@@ -1,0 +1,50 @@
+------------------------------- -------- -------- ------ -----------------------------------	-----------------------------------
+  Name                            Method   Scheme   Host   Path					Description   
+ ------------------------------- -------- -------- ------ -----------------------------------	-----------------------------------
+  admin                           ANY      ANY      ANY    /admin				Acceuil Back Office
+  app_annonce_apercut             ANY      ANY      ANY    /annonce				Vue de toutes les annonces
+  app_annonce_add                 ANY      ANY      ANY    /annonce/add				Formulaire d'ajout d'une annonce
+  app_compte_recette              ANY      ANY      ANY    /compte/recette			Vue de ses recettes
+  app_compte_sujet                ANY      ANY      ANY    /compte/sujet			Vue de ses sujets
+  app_compte_commentaire          ANY      ANY      ANY    /compte/commentaire			Vue de ses commentaires
+  app_compte_annonce              ANY      ANY      ANY    /compte/annonce			Vue de ses annonces
+  app_compte_commentaire_delete   ANY      ANY      ANY    /compte/commentaire/delete/{id}	Suppression d'un commentaire
+  app_compte_sujet_delete         ANY      ANY      ANY    /compte/sujet/delete/{id}		Suppression d'un sujet
+  app_compte_recette_delete       ANY      ANY      ANY    /compte/recette/delete/{id}		Suppression d'une recette
+  app_compte_annonce_delete       ANY      ANY      ANY    /compte/annonce/delete/{id}		Suppression d'une annonce
+  app_compte_annonce_update       ANY      ANY      ANY    /compte/annonce/update/{id}		Formulaire de mofication d'une annonce
+  home                            ANY      ANY      ANY    /					Acceuil Front Office
+  app_recette_confiture           ANY      ANY      ANY    /recette/confiture			Vue de toutes les confitures
+  app_recette_glace               ANY      ANY      ANY    /recette/glace			Vue de toutes les glaces
+  app_recette_gateau              ANY      ANY      ANY    /recette/gateau			Vue de toutes les gateaux
+  app_recette_yaourt              ANY      ANY      ANY    /recette/yaourt			Vue de toutes les yaourts
+  app_recette_add                 ANY      ANY      ANY    /recette/add				Formulaire d'ajout d'une recette
+  app_recette_view                ANY      ANY      ANY    /recette/{slug}			Vue détaillée d'une recette
+  app_recette_delete              ANY      ANY      ANY    /recette/delete/{id}			Suppression d'une recette
+  app_register                    ANY      ANY      ANY    /register				Formulaire d'inscription
+  app_register_fruiticulteur      ANY      ANY      ANY    /register/fruiticulteur		Formulaire d'inscription de fruiticulteur
+  app_verify_email                ANY      ANY      ANY    /verify/email			Vérification d'email
+  app_forgot_password_request     ANY      ANY      ANY    /reset-password			Formulaire d'email pour réinitialisation de mot de passe
+  app_check_email                 ANY      ANY      ANY    /reset-password/check-email		Vérification de demande de réinitialisation de mot de passe
+  app_reset_password              ANY      ANY      ANY    /reset-password/reset/{token}	Formulaire de réinitialisation de mot de passe
+  app_login                       ANY      ANY      ANY    /login				Formulaire de connexion
+  app_logout                      ANY      ANY      ANY    /logout				Déconnexion
+  app_sujet_add                   ANY      ANY      ANY    /sujet/add				Formulaire d'ajout d'un sujet
+  app_sujet_forum                 ANY      ANY      ANY    /sujet/forum				Vue de tous les sujets
+  app_sujet_view                  ANY      ANY      ANY    /sujet/{slug}			Vue détaillée d'un sujet
+  app_sujet_delete                ANY      ANY      ANY    /sujet/delete/{id}			Suppression d'un sujet
+  app_sujet_commentaire_delete    ANY      ANY      ANY    /sujet/commentaire/delete/{id}	Suppression d'un commentaire
+  app_test                        ANY      ANY      ANY    /test				Controller et view de test (temporaire)
+  _preview_error                  ANY      ANY      ANY    /_error/{code}.{_format}
+  _wdt                            ANY      ANY      ANY    /_wdt/{token}
+  _profiler_home                  ANY      ANY      ANY    /_profiler/
+  _profiler_search                ANY      ANY      ANY    /_profiler/search
+  _profiler_search_bar            ANY      ANY      ANY    /_profiler/search_bar
+  _profiler_phpinfo               ANY      ANY      ANY    /_profiler/phpinfo
+  _profiler_search_results        ANY      ANY      ANY    /_profiler/{token}/search/results
+  _profiler_open_file             ANY      ANY      ANY    /_profiler/open
+  _profiler                       ANY      ANY      ANY    /_profiler/{token}
+  _profiler_router                ANY      ANY      ANY    /_profiler/{token}/router
+  _profiler_exception             ANY      ANY      ANY    /_profiler/{token}/exception
+  _profiler_exception_css         ANY      ANY      ANY    /_profiler/{token}/exception.css
+ ------------------------------- -------- -------- ------ -----------------------------------

@@ -4,7 +4,9 @@ namespace App\Controller\Admin;
 
 use App\Entity\Commentaire;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
@@ -31,6 +33,15 @@ class CommentaireCrudController extends AbstractCrudController
         return $crud
             ->setDefaultSort(['date_commentaire' => 'DESC'])
             ->addFormTheme('@FOSCKEditor/Form/ckeditor_widget.html.twig')
+        ;
+    }
+
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions
+            // ...
+            // this will forbid to create or delete entities in the backend
+            ->disable(Action::NEW)
         ;
     }
 

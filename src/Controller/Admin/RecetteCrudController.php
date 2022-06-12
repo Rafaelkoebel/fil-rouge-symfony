@@ -6,7 +6,9 @@ use App\Entity\Recette;
 use App\Repository\CategorieRepository;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
@@ -35,6 +37,15 @@ class RecetteCrudController extends AbstractCrudController
         return $crud
             ->setDefaultSort(['date_publication' => 'DESC'])
             ->addFormTheme('@FOSCKEditor/Form/ckeditor_widget.html.twig')
+        ;
+    }
+
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions
+            // ...
+            // this will forbid to create or delete entities in the backend
+            ->disable(Action::NEW)
         ;
     }
 
