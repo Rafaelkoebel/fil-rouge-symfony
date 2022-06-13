@@ -17,7 +17,10 @@
         {# </a>  #}
                 <ul class="list-group list-group-flush">
                 <li class="list-group-item">Posté le {{vente.dateVente | format_datetime( locale='fr',pattern="dd MMMM YYYY") }}</li>
-                </ul> 
+                </ul>
+                {% if is_granted("ROLE_USER") %}
+                <a href="{{ path('app_panier_add', {id: vente.id}) }}" class="btn btn-warning btn-sm">Ajouter au panier</a>
+                {% endif %}
                 {% if is_granted("ROLE_FRUITICULTEUR") and vente.utilisateur.id == app.user.id %}
                 <a href="{{ path('app_compte_annonce_update', {id: vente.id}) }}" class="btn btn-info btn-sm">Modifier</a>
                 <a href="{{ path('app_compte_annonce_delete', {id: vente.id}) }}" class="btn btn-danger btn-sm" onclick="return confirm('Suppression ?')">Supprimer</a>

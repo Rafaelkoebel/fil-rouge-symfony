@@ -52,12 +52,12 @@ class Vente
         return $this->date_vente;
     }
 
-    public function setDateVente(\DateTimeInterface $date_vente): self
-    {
-        $this->date_vente = $date_vente;
+    // public function setDateVente(\DateTimeInterface $date_vente): self
+    // {
+    //     $this->date_vente = $date_vente;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getUtilisateur(): ?Utilisateur
     {

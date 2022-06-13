@@ -33,6 +33,15 @@
   font-style: normal;
 }
 
+/* #panier{
+  margin-right: 20px;
+} */
+
+#logoheader{
+  display: flex;
+  align-items: center;
+}
+
 #table{
   display: flex;
   justify-content: center;
@@ -74,6 +83,7 @@ tfoot {
 #icone{
   color: black;
   border: 1px black solid;
+  margin-left: 10px;
 }
 
 #souscard{

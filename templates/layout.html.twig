@@ -56,26 +56,73 @@
                   </form>
                 </div>
               </nav> #}
-              {% if is_granted("ROLE_USER") %}
-             <div class="dropdown">
-                <svg id="icone" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownMenuButton1" class="btn  dropdown-toggle" xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
-                </svg>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li style="color:blue; text-decoration:underline;">{{ app.user.email }}</li>
-                    <li><a class="dropdown-item" href="{{ path('app_compte_recette') }}">Mes recettes</a></li>
-                    <li><a class="dropdown-item" href="{{ path('app_compte_sujet') }}">Mes sujets </a></li>
-                    <li><a class="dropdown-item" href="{{ path('app_compte_commentaire') }}">Mes commentaires</a></li>
-                    {% if is_granted("ROLE_FRUITICULTEUR") %}
-                        <li><a class="dropdown-item" href="{{ path('app_compte_annonce') }}">Mes annonces</a></li>
-                    {% endif %}
-                </ul>
+            {% if is_granted("ROLE_USER") %}
+            <div id="logoheader">
+                <div class="dropdown">
+                    <img src="{{ asset('assets/img/panier.png') }}" alt="panier" id="icone" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownMenuButton1" class="btn  dropdown-toggle" xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                    {# <svg id="icone" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownMenuButton1" class="btn  dropdown-toggle" xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16"> #}
+                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                    </svg>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li style="color:blue; text-decoration:underline;">{{ app.user.email }}</li>
+                        <li><a class="dropdown-item" href="#">
+                            {# {% for vente in ventes %}
+    
+                                        <div class="card m-3" style="width: 15rem; ">
+                                            <img src="{{ vente.produit.image }}" class="card-img-top" alt="" style="width: 100%">
+                                            <div class="card-body">
+                                            <h5 class="card-title fw-bolder">{{ vente.produit.nom}}</h5>
+                                            <h5 class="card-title fw-bolder">Prix : {{ vente.prix}} €</h5> 
+                                            <h5 class="card-title fw-bolder">Vendu par :{{ vente.utilisateur.email}}</h5> 
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Posté le {{vente.dateVente | format_datetime( locale='fr',pattern="dd MMMM YYYY") }}</li>
+                                            </ul>
+                                            {% if is_granted("ROLE_USER") %}
+                                            <a href="#" class="btn btn-warning btn-sm">Ajouter au panier</a>
+                                            {% endif %}
+                                            {% if is_granted("ROLE_FRUITICULTEUR") and vente.utilisateur.id == app.user.id %}
+                                            <a href="{{ path('app_compte_annonce_update', {id: vente.id}) }}" class="btn btn-info btn-sm">Modifier</a>
+                                            <a href="{{ path('app_compte_annonce_delete', {id: vente.id}) }}" class="btn btn-danger btn-sm" onclick="return confirm('Suppression ?')">Supprimer</a>
+                                            {% endif %}
+                                        </div> 
+                                
+                                {% endfor %}     #}
+                        </a></li>
+                    </ul>
+                </div>
+
+                {# <div class="dropdown">
+                    <img src="{{ asset('assets/img/panier.png') }}" alt="panier" width="60" height="60" id="panier">
+                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li style="color:blue; text-decoration:underline;">{{ app.user.email }}</li>
+                        <li><a class="dropdown-item" href="{{ path('app_compte_recette') }}">Mes recettes</a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_compte_sujet') }}">Mes sujets </a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_compte_commentaire') }}">Mes commentaires</a></li>
+                    </ul>
+                </div> #}
+                <div class="dropdown">
+                    <svg id="icone" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownMenuButton1" class="btn  dropdown-toggle" xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                    </svg>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li style="color:blue; text-decoration:underline;">{{ app.user.email }}</li>
+                        <li><a class="dropdown-item" href="{{ path('app_compte_recette') }}">Mes recettes</a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_compte_sujet') }}">Mes sujets </a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_compte_commentaire') }}">Mes commentaires</a></li>
+                        {% if is_granted("ROLE_FRUITICULTEUR") %}
+                            <li><a class="dropdown-item" href="{{ path('app_compte_annonce') }}">Mes annonces</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+                {% else %}
+                    <svg id="icone2" xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-person-x" viewBox="0 0 16 16">
+                    <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                    <path fill-rule="evenodd" d="M12.146 5.146a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z"/>
+                    </svg>
             </div>
-            {% else %}
-                <svg id="icone2" xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-person-x" viewBox="0 0 16 16">
-                <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
-                <path fill-rule="evenodd" d="M12.146 5.146a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z"/>
-                </svg>
             {% endif %}
             </header>
     <div id="pc">

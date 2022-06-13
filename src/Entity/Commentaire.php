@@ -66,12 +66,12 @@ class Commentaire
         return $this->date_commentaire;
     }
 
-    public function setDateCommentaire(\DateTimeInterface $date_commentaire): self
-    {
-        $this->date_commentaire = $date_commentaire;
+    // public function setDateCommentaire(\DateTimeInterface $date_commentaire): self
+    // {
+    //     $this->date_commentaire = $date_commentaire;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getType(): ?int
     {
