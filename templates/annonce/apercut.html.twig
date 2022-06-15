@@ -3,6 +3,10 @@
 {% block title %}Annonces{% endblock %}
 
 {% block body %}
+{% for message in app.flashes('refuse') %}
+    <div class="alert alert-danger" role="alert" style="text-align:center;">{{ message }}</div>
+{% endfor %}
+
 <div id="card">
     {% for vente in ventes %}
     
