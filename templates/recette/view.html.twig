@@ -42,7 +42,9 @@
 </div>
 {% endfor %}
 
+{% if is_granted("ROLE_USER") %}
 {{form(form)}}
+{% endif %}
                         
                             
 {% endblock %}

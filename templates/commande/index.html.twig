@@ -1,0 +1,14 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Commande{% endblock %}
+
+{% block body %}
+{{dump(request)}}
+
+<form action="commande" method="post">
+    <label for="name">nom</label>
+
+    <input type="text" id="name" name="name" required
+           minlength="4" maxlength="8" size="10">
+</form>
+{% endblock %}

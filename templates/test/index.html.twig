@@ -2,8 +2,8 @@
 
 {% block title %}Hello TestController!{% endblock %}
 
-{% block body %}
-<form action="test2" method="post">
+ {% block body %}
+{#<form action="test" method="post">
 
     <label for="name">nom</label>
 
@@ -11,7 +11,38 @@
            minlength="4" maxlength="8" size="10">
 
 
-</form>
+           <label for="name">prenom</label>
+
+    <input type="text" id="prenom" name="name" required
+           minlength="4" maxlength="8" size="10">
+
+        </form> #}
+
+
+
+           {{ form_start(form) }}
+       
+           <div class="row">
+               <div class="col">
+                   {{ form_row(form.nom) }}
+               </div>
+               <div class="col" id="some-custom-id">
+                   {{ form_row(form.prenom) }}
+               </div>
+               <div class="col" id="some-custom-id">
+                   {{ form_row(form2.quantite) }}
+               </div>
+               <div class="col" id="some-custom-id">
+                   {{ form_row(form2.prix) }}
+               </div>
+           </div>
+
+           {{ form_row(form.submit) }}
+
+
+       {{ form_end(form) }}
+
+
 
 
 {% endblock %}

@@ -77,7 +77,7 @@ class PanierController extends AbstractController
             $fruitipanier = $session->get('fruiti');
             //Si le fruiti de la session != fruitivente  -> message d'erreur
             if ($fruitipanier != $fruitivente) {
-                $this->addFlash('refuse', 'Le fournisseur est différent, veuillez passer commande puis renouvelez votre action.');
+                $this->addFlash('refuse', 'Votre panier comporte des articles d\'un autre fournisseur, finalisé d\'abord votre commande avant de changer de fournisseur.');
                 return $this->redirectToRoute('app_annonce_apercut');
             }
             //Si la vente = fruitipanier

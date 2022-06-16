@@ -15,7 +15,7 @@
             </div>
     </a>
             <ul class="list-group list-group-flush">
-            <li class="list-group-item">{{recette.DatePublication | format_datetime( locale='fr',pattern="dd MMMM YYYY HH:mm") }}</li>
+            <li class="list-group-item">{{recette.DatePublication | format_datetime( locale='fr',pattern="dd MMMM YYYY") }}</li>
             </ul>
             {% if is_granted("ROLE_USER") and recette.utilisateur.id == app.user.id %}
             <a href="{{ path('app_recette_delete', {id: recette.id}) }}" class="btn btn-danger btn-sm" onclick="return confirm('Suppression ?')">Supprimer</a>

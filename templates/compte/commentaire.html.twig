@@ -20,7 +20,7 @@
                     <div id="comms2">
                         <div id="comms">
                             <p>{{commentaire.contenu}}</p>
-                            <p id="datecomms">Le {{commentaire.DateCommentaire | format_datetime( locale='fr',pattern="dd MMMM YYYY")}}</p>
+                            <p id="datecomms">Le {{commentaire.DateCommentaire | format_datetime( locale='fr',pattern="dd MMMM YYYY HH:mm")}}</p>
                             <a href="{{ path('app_compte_commentaire_delete', {id: commentaire.id}) }}" class="btn btn-danger btn-sm" onclick="return confirm('Suppression ?')">Supprimer</a>
                         </div>
                     </div>
@@ -31,7 +31,7 @@
                     <div id="comms2">
                         <div id="comms">
                             <p>{{commentaire.contenu}}</p>
-                            <p id="datecomms">Le {{commentaire.DateCommentaire | format_datetime( locale='fr',pattern="dd MMMM YYYY")}}</p>
+                            <p id="datecomms">Le {{commentaire.DateCommentaire | format_datetime( locale='fr',pattern="dd MMMM YYYY HH:mm")}}</p>
                             <a href="{{ path('app_compte_commentaire_delete', {id: commentaire.id}) }}" class="btn btn-danger btn-sm" onclick="return confirm('Suppression ?')">Supprimer</a>
                         </div>
                     </div>

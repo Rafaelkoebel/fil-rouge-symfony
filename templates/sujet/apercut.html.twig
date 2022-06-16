@@ -13,7 +13,7 @@
                     <h1>{{sujet.titre}}</h1>
                     <div>{{sujet.contenu | u.truncate(200, '...')  | raw}}</div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">{{sujet.DatePublication | format_datetime( locale='fr',pattern="dd MMMM YYYY HH:mm") }}</li>
+                        <li class="list-group-item">{{sujet.DatePublication | format_datetime( locale='fr',pattern="dd MMMM YYYY") }}</li>
                     </ul>
                     {% if is_granted("ROLE_USER") and sujet.utilisateur.id == app.user.id %}
                     <a href="{{ path('app_sujet_delete', {id: sujet.id}) }}" class="btn btn-danger btn-sm" onclick="return confirm('Suppression ?')">Supprimer</a>
