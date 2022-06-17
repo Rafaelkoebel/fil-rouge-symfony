@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\PanierRepository;
+use App\Repository\LigneCommandeRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: PanierRepository::class)]
-class Panier
+#[ORM\Entity(repositoryClass: LigneCommandeRepository::class)]
+class LigneCommande
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -14,16 +14,15 @@ class Panier
     private $id;
 
     #[ORM\Column(type: 'integer')]
-    private $quantité;
+    private $quantite;
 
     #[ORM\Column(type: 'integer')]
     private $prix;
 
-    #[ORM\ManyToOne(targetEntity: Commande::class, inversedBy: 'paniers')]
+    #[ORM\ManyToOne(targetEntity: Commande::class, inversedBy: 'ligneCommandes')]
     private $commande;
 
-    #[ORM\ManyToOne(targetEntity: Produit::class, inversedBy: 'paniers')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\ManyToOne(targetEntity: Produit::class, inversedBy: 'ligneCommandes')]
     private $produit;
 
     public function getId(): ?int
@@ -31,14 +30,14 @@ class Panier
         return $this->id;
     }
 
-    public function getQuantité(): ?int
+    public function getQuantite(): ?int
     {
-        return $this->quantité;
+        return $this->quantite;
     }
 
-    public function setQuantité(int $quantité): self
+    public function setQuantite(int $quantite): self
     {
-        $this->quantité = $quantité;
+        $this->quantite = $quantite;
 
         return $this;
     }

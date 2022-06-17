@@ -3,12 +3,23 @@
 {% block title %}Commande{% endblock %}
 
 {% block body %}
-{{dump(request)}}
+{{dump()}}
 
-<form action="commande" method="post">
+{# {% for panier in panier %}
+ <h1>{{ panier}}</h1>
+{% endfor %} #}
+
+{# {% for element in dataPanier %}
+ <h1>{{element.vente.prix}}</h1>
+{% endfor %} #}
+
+{# <form action="commande" method="post">
     <label for="name">nom</label>
 
     <input type="text" id="name" name="name" required
            minlength="4" maxlength="8" size="10">
-</form>
+</form> #}
+
+{# {{dataPanier.quantite}} #}
+{{form(form)}}
 {% endblock %}

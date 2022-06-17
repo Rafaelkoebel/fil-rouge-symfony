@@ -34,17 +34,28 @@ class TestController extends AbstractController
 
         return $this->render('test/index.html.twig', [
             'form' => $form->createView(),
-            'form2' => $form2->createView(),
+            // 'form2' => $form2->createView(),
         ]);
     }
 
     #[Route('/test2', name: 'app_test2')]
-    public function index2(Request $request): Response
+    public function index2(Request $request, ManagerRegistry $doctrine): Response
     {
-        dd($request);
-        // $nom = $form->handleRequest($request);
+        // $test = new Test();
+        // // $test2 = new Test2();
+        // $form = $this->createForm(TestType::class, $test);
+        // // $form2 = $this->createForm(Test2Type::class, $test2);
+
+        // $form->handleRequest($request);
+        // if ($form->isSubmitted() && $form->isValid()) {
+        //     $em = $doctrine->getManager();
+        //     $em->persist($test);
+        //     // $em->persist($test2);
+        //     $em->flush();
+        //     return $this->redirectToRoute('home');
+        // }
         return $this->render('test/index2.html.twig', [
-            // 'form' => $nom,
+            // 'form' => $form->createView(),
         ]);
     }
 }

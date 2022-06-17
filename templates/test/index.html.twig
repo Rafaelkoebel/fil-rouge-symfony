@@ -3,26 +3,24 @@
 {% block title %}Hello TestController!{% endblock %}
 
  {% block body %}
-{#<form action="test" method="post">
+{{dump()}}
+{# <form action="test" method="post">
 
-    <label for="name">nom</label>
+    {{ form_row(form.nom) }}
+    {{ form_row(form.prenom) }}
 
-    <input type="text" id="name" name="name" required
-           minlength="4" maxlength="8" size="10">
+    {{ form_row(form.submit) }}
 
 
-           <label for="name">prenom</label>
+</form> #}
 
-    <input type="text" id="prenom" name="name" required
-           minlength="4" maxlength="8" size="10">
 
-        </form> #}
 
 
 
            {{ form_start(form) }}
        
-           <div class="row">
+           {# <div class="row">
                <div class="col">
                    {{ form_row(form.nom) }}
                </div>
@@ -35,12 +33,14 @@
                <div class="col" id="some-custom-id">
                    {{ form_row(form2.prix) }}
                </div>
-           </div>
+           </div> #}
 
-           {{ form_row(form.submit) }}
+           {# {{ form_row(form.submit) }} #}
 
-
-       {{ form_end(form) }}
+           
+           
+           {{ form_end(form) }}
+           {# {{ form_row(form.submit) }} #}
 
 
 

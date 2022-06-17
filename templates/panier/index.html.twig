@@ -68,7 +68,7 @@
 </table>
 
 <div class="d-flex justify-content-center">
-    <a href="{{ path('app_commande') }}" class="btn btn-success btn-lg">Commander</a>
+    <a href="{{ path('app_commande', {dataPanier: dataPanier}) }}" class="btn btn-success btn-lg">Commander</a>
 </div>
 
 {% endblock %}

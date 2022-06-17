@@ -81,7 +81,7 @@ class PanierController extends AbstractController
                 return $this->redirectToRoute('app_annonce_apercut');
             }
             //Si la vente = fruitipanier
-            //Si la vente est déja dans la panier
+            //Si la vente est déja dans le panier
             if (!empty($panier[$id])) {
                 $panier[$id]++;
             }

@@ -47,12 +47,12 @@ class Commande
     #[ORM\JoinColumn(nullable: false)]
     private $utilisateur;
 
-    #[ORM\OneToMany(mappedBy: 'commande', targetEntity: Panier::class)]
-    private $paniers;
+    #[ORM\OneToMany(mappedBy: 'commande', targetEntity: LigneCommande::class)]
+    private $ligneCommandes;
 
     public function __construct()
     {
-        $this->paniers = new ArrayCollection();
+        $this->ligneCommandes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -169,32 +169,33 @@ class Commande
     }
 
     /**
-     * @return Collection<int, Panier>
+     * @return Collection<int, LigneCommande>
      */
-    public function getPaniers(): Collection
+    public function getLigneCommandes(): Collection
     {
-        return $this->paniers;
+        return $this->ligneCommandes;
     }
 
-    public function addPanier(Panier $panier): self
+    public function addLigneCommande(LigneCommande $ligneCommande): self
     {
-        if (!$this->paniers->contains($panier)) {
-            $this->paniers[] = $panier;
-            $panier->setCommande($this);
+        if (!$this->ligneCommandes->contains($ligneCommande)) {
+            $this->ligneCommandes[] = $ligneCommande;
+            $ligneCommande->setCommande($this);
         }
 
         return $this;
     }
 
-    public function removePanier(Panier $panier): self
+    public function removeLigneCommande(LigneCommande $ligneCommande): self
     {
-        if ($this->paniers->removeElement($panier)) {
+        if ($this->ligneCommandes->removeElement($ligneCommande)) {
             // set the owning side to null (unless already changed)
-            if ($panier->getCommande() === $this) {
-                $panier->setCommande(null);
+            if ($ligneCommande->getCommande() === $this) {
+                $ligneCommande->setCommande(null);
             }
         }
 
         return $this;
     }
+
 }

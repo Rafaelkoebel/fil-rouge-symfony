@@ -31,8 +31,9 @@ class Produit
     #[ORM\OneToMany(mappedBy: 'produit', targetEntity: Vente::class)]
     private $ventes;
 
-    #[ORM\OneToMany(mappedBy: 'produit', targetEntity: Panier::class)]
-    private $paniers;
+    #[ORM\OneToMany(mappedBy: 'produit', targetEntity: LigneCommande::class)]
+    private $ligneCommandes;
+
 
     public function __toString()
     {
@@ -42,7 +43,7 @@ class Produit
     public function __construct()
     {
         $this->ventes = new ArrayCollection();
-        $this->paniers = new ArrayCollection();
+        $this->ligneCommandes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -117,32 +118,33 @@ class Produit
     }
 
     /**
-     * @return Collection<int, Panier>
+     * @return Collection<int, LigneCommande>
      */
-    public function getPaniers(): Collection
+    public function getLigneCommandes(): Collection
     {
-        return $this->paniers;
+        return $this->ligneCommandes;
     }
 
-    public function addPanier(Panier $panier): self
+    public function addLigneCommande(LigneCommande $ligneCommande): self
     {
-        if (!$this->paniers->contains($panier)) {
-            $this->paniers[] = $panier;
-            $panier->setProduit($this);
+        if (!$this->ligneCommandes->contains($ligneCommande)) {
+            $this->ligneCommandes[] = $ligneCommande;
+            $ligneCommande->setProduit($this);
         }
 
         return $this;
     }
 
-    public function removePanier(Panier $panier): self
+    public function removeLigneCommande(LigneCommande $ligneCommande): self
     {
-        if ($this->paniers->removeElement($panier)) {
+        if ($this->ligneCommandes->removeElement($ligneCommande)) {
             // set the owning side to null (unless already changed)
-            if ($panier->getProduit() === $this) {
-                $panier->setProduit(null);
+            if ($ligneCommande->getProduit() === $this) {
+                $ligneCommande->setProduit(null);
             }
         }
 
         return $this;
     }
+
 }
