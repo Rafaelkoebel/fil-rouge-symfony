@@ -1,12 +1,4 @@
-{# {% apply inline_css %}
-<style>
-    h1 {
-        color: blue;
-    }
-</style> #}
-
 <h1>Confirmation de commande</h1>
-{# {% endapply %} #}
 
 <div>
     <p class="text-success">Cher Madame,Monsieur {{nom}}, <br>
@@ -19,10 +11,10 @@
 <h2>Détails de votre commande :</h2>
 <div>
     <p>Adresse de livraison :</p>
-    {{prenom}} {{nom}}
-    {{adresseLivraison}}
-    {{codePostal}} {{ville}}
-    {{pays}}
+    {{prenom}} {{nom}} <br>
+    {{adresseLivraison}} <br>
+    {{codePostal}} {{ville}} <br>
+    {{pays}} <br>
     {{telephone}}
 
     <p>Date de commande :</p>
@@ -30,10 +22,9 @@
 </div>
 <h2>COMMANDE :</h2>
 <div>
-    Produit
     {% for panier in dataPanier %}
 
-    Nom: {{panier.produit}}
+    Produit: {{panier.produit}} <br>
     Quantité: {{panier.quantite}}
     
     {% if panier.quantite == 1 %}
@@ -52,35 +43,3 @@
     Total à regler:
     {{total}}€
 </div>
-
-
-
-
-
-
-
-
-{# <p>Vendeur: {{vendeur}}</p> 
-<p>Vendeur: {{nom}}</p> 
-{% for panier in dataPanier %}
-<div>
-    <p>    Nom: {{panier.produit}}
-    </p>
-    <p>    Quantité: {{panier.quantite}}
-    </p>
-    {% if panier.quantite == 1 %}
-
-    <p>Prix: {{panier.prix}}€</p>
-
-        {% else %}
-            
-        <p>Prix unitaire: {{panier.prix}}€</p>
-
-        <p>Prix: {{panier.prix * panier.quantite}}€</p>
-
-    {% endif %}
-
-</div>
-<hr>
-{% endfor %}
-<h2>Prix total de la commande: {{total}}€</h2> #}

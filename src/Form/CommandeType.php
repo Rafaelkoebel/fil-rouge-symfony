@@ -22,7 +22,9 @@ class CommandeType extends AbstractType
             ->add('telephone')
             //->add('date_commande')
             //->add('utilisateur')
-            ->add('submit', SubmitType::class)
+            ->add('submit', SubmitType::class,[
+                'label' => 'Valider'
+            ])
         ;
     }
 
