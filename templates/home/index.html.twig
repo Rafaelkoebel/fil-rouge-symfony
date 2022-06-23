@@ -3,6 +3,9 @@
 {% block title %}Acceuil{% endblock %}
 
 {% block body %}
+{% for message in app.flashes('successpanier') %}
+    <div class="alert alert-success" role="alert" style="text-align:center;">{{ message }}</div>
+{% endfor %}
 <main>
     
     <iframe width="560" height="315" src="https://www.youtube.com/embed/cA02sRHo9-8" title="YouTube video player" id="video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

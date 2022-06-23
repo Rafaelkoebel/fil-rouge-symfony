@@ -1,0 +1,86 @@
+{# {% apply inline_css %}
+<style>
+    h1 {
+        color: blue;
+    }
+</style> #}
+
+<h1>Confirmation de commande</h1>
+{# {% endapply %} #}
+
+<div>
+    <p class="text-success">Cher Madame,Monsieur {{nom}}, <br>
+    Rouge Délice vous remercie de votre commande et de votre confiance <br>
+    Nous traitons actuellement votre commande. Pour cette raison, celle-ci ne peut plus être modifiée. Veuillez trouver ci-dessous le détail des articles commandés. <br>
+    Nous espérons que vous serez satisfait de vos achats. <br>
+    Cordialement, <br>
+    Votre équipe Rouge Délice</p>
+</div>
+<h2>Détails de votre commande :</h2>
+<div>
+    <p>Adresse de livraison :</p>
+    {{prenom}} {{nom}}
+    {{adresseLivraison}}
+    {{codePostal}} {{ville}}
+    {{pays}}
+    {{telephone}}
+
+    <p>Date de commande :</p>
+    {{dateCommande | format_datetime( locale='fr',pattern="dd MMMM YYYY HH:mm")}}
+</div>
+<h2>COMMANDE :</h2>
+<div>
+    Produit
+    {% for panier in dataPanier %}
+
+    Nom: {{panier.produit}}
+    Quantité: {{panier.quantite}}
+    
+    {% if panier.quantite == 1 %}
+
+    <p>Prix: {{panier.prix}}€</p>
+
+        {% else %}
+            
+        <p>Prix unitaire: {{panier.prix}}€</p>
+
+        <p>Prix: {{panier.prix * panier.quantite}}€</p>
+
+    {% endif %}
+    <hr>
+    {% endfor %}
+    Total à regler:
+    {{total}}€
+</div>
+
+
+
+
+
+
+
+
+{# <p>Vendeur: {{vendeur}}</p> 
+<p>Vendeur: {{nom}}</p> 
+{% for panier in dataPanier %}
+<div>
+    <p>    Nom: {{panier.produit}}
+    </p>
+    <p>    Quantité: {{panier.quantite}}
+    </p>
+    {% if panier.quantite == 1 %}
+
+    <p>Prix: {{panier.prix}}€</p>
+
+        {% else %}
+            
+        <p>Prix unitaire: {{panier.prix}}€</p>
+
+        <p>Prix: {{panier.prix * panier.quantite}}€</p>
+
+    {% endif %}
+
+</div>
+<hr>
+{% endfor %}
+<h2>Prix total de la commande: {{total}}€</h2> #}
