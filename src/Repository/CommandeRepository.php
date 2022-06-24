@@ -39,6 +39,17 @@ class CommandeRepository extends ServiceEntityRepository
         }
     }
 
+    public function mescommandes($utilisateur)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.utilisateur = :utilisateur_id')
+            ->orderBy('c.date_commande', 'DESC')
+            ->setParameter('utilisateur_id', $utilisateur)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 //    /**
 //     * @return Commande[] Returns an array of Commande objects
 //     */

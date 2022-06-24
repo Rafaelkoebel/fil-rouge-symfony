@@ -10,6 +10,7 @@ use App\Entity\Commentaire;
 use App\Repository\SujetRepository;
 use App\Repository\VenteRepository;
 use App\Repository\RecetteRepository;
+use App\Repository\CommandeRepository;
 use App\Repository\CommentaireRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
@@ -44,14 +45,8 @@ class CompteController extends AbstractController
     public function commentaire(CommentaireRepository $commentaireRepository): Response
     {
         $utilisateur = $this->getUser('user');
-        // $commentaire = $this->getId('id');
         $commentaires = $commentaireRepository->mescommentairesrecette($utilisateur);
         $commentaires2 = $commentaireRepository->mescommentairessujet($utilisateur);
-
-        // $em = $doctrine->getManager();
-        // $em->remove($commentaire);
-        // $em->flush();
-
         return $this->render('compte/commentaire.html.twig', [
             'commentaires' => $commentaires,
             'commentaires2' => $commentaires2,
@@ -65,6 +60,16 @@ class CompteController extends AbstractController
         $ventes = $venteRepository->mesventes($utilisateur);
         return $this->render('compte/annonce.html.twig', [
             'ventes' => $ventes,
+        ]);
+    }
+
+    #[Route('/commande', name: 'commande')]
+    public function commande(CommandeRepository $commandeRepository): Response
+    {
+        $utilisateur = $this->getUser('user');
+        $commandes = $commandeRepository->mescommandes($utilisateur);
+        return $this->render('compte/commande.html.twig', [
+            'commandes' => $commandes,
         ]);
     }
 

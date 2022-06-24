@@ -69,6 +69,7 @@
                         <li><a class="dropdown-item" href="{{ path('app_compte_recette') }}">Mes recettes</a></li>
                         <li><a class="dropdown-item" href="{{ path('app_compte_sujet') }}">Mes sujets </a></li>
                         <li><a class="dropdown-item" href="{{ path('app_compte_commentaire') }}">Mes commentaires</a></li>
+                        <li><a class="dropdown-item" href="{{ path('app_compte_commande') }}">Mes commandes</a></li>
                         {% if is_granted("ROLE_FRUITICULTEUR") %}
                             <li><a class="dropdown-item" href="{{ path('app_compte_annonce') }}">Mes annonces</a></li>
                         {% endif %}
