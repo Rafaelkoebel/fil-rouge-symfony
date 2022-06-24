@@ -1,50 +1,74 @@
-<style>
-    h1{
-        color: blueviolet;
-    }
-</style>
+<div style="background-color: rgba(184, 184, 184, 0.507); padding-top: 20px; padding-bottom: 20px;">
 
-<h1>Confirmation de commande</h1>
-<div>
-    <p style="color: white;">Cher Madame,Monsieur {{nom}}, <br>
-    Rouge Délice vous remercie de votre commande et de votre confiance <br>
-    Nous traitons actuellement votre commande. Pour cette raison, celle-ci ne peut plus être modifiée. Veuillez trouver ci-dessous le détail des articles commandés. <br>
-    Nous espérons que vous serez satisfait de vos achats. <br>
-    Cordialement, <br>
-    Votre équipe Rouge Délice</p>
-</div>
-<h2>Détails de votre commande :</h2>
-<div>
-    <p style="text-decoration:underline;">Adresse de livraison :</p>
-    {{prenom}} {{nom}} <br>
-    {{adresseLivraison}} <br>
-    {{codePostal}} {{ville}} <br>
-    {{pays}} <br>
-    {{telephone}}
-
-    <p>Date de commande :</p>
-    {{dateCommande | format_datetime( locale='fr',pattern="dd MMMM YYYY HH:mm")}}
-</div>
-<h2>COMMANDE :</h2>
-<div>
-    {% for panier in dataPanier %}
-
-    Produit: {{panier.produit}} <br>
-    Quantité: {{panier.quantite}}
+    <div style="background-color: white; width: 80%; margin: auto;">
+        <h1 style="text-align: center;">Confirmation de commande</h1>
+        <div style="margin: 20px; font-size: 1.3em;">
+            <p>Cher Madame,Monsieur {{nom}},</p>
+            <p>Rouge Délice vous remercie de votre commande et de votre confiance</p>
+            Nous traitons actuellement votre commande. Pour cette raison, celle-ci ne peut plus être modifiée.<br>
+            Veuillez trouver ci-dessous le détail des articles commandés. <br>
+            <p>Nous espérons que vous serez satisfait de vos achats.</p>
+            Cordialement, <br>
+            Votre équipe Rouge Délice</p>
+        </div>
     
-    {% if panier.quantite == 1 %}
+    </div>
 
-    <p>Prix: {{panier.prix}}€</p>
-
-        {% else %}
+    <div style="background-color: white; width: 80%; margin: auto;">
+        <h2 style="margin: 10px;">Détails de votre commande :</h2>
+        <div style="margin: 20px; font-size: 1.3em;">
+            <p style="text-decoration:underline; font-weight: bold;">Adresse de livraison :</p>
+            {{prenom}} {{nom}} <br>
+            {{adresseLivraison}} <br>
+            {{codePostal}} {{ville}} <br>
+            {{pays}} <br>
+            {{telephone}}
             
-        <p>Prix unitaire: {{panier.prix}}€</p>
+            <p style="text-decoration:underline; font-weight: bold;">Date de commande :</p>
+            {{dateCommande | format_datetime( locale='fr',pattern="dd MMMM YYYY HH:mm")}}
+        </div>
+    </div>
 
-        <p>Prix: {{panier.prix * panier.quantite}}€</p>
+    <div style="background-color: white; width: 80%; margin: auto;">
+        <h2 style="margin: 10px;">COMMANDE :</h2>
+        <table class="bg_white" role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+            <hr>
+            <tr>
+                <th width="80%" style="text-align:left; padding: 0 2.5em; color: #000; padding-bottom: 20px">Produit:</th>
+                <th width="20%" style="text-align:right; padding: 0 2.5em; color: #000; padding-bottom: 20px">Prix:</th>
+                
+            </tr>
+            {% for panier in dataPanier %}
+                <tr>
+                    <td width="80%" style="text-align:left; padding: 0 2.5em; color: #000; padding-bottom: 20px">
+                        {{panier.produit}}
+                    </td>
 
-    {% endif %}
-    <hr>
-    {% endfor %}
-    Total à regler:
-    {{total}}€
+                    <td width="20%" style="text-align:right; padding: 0 2.5em; color: #000; padding-bottom: 20px">
+                        {{panier.prix * panier.quantite}}
+                    </td>
+
+                </tr>
+                
+                <tr>
+                    <td width="80%" style="text-align:left; padding: 0 2.5em; color: #000; padding-bottom: 20px">
+                        Quantité: {{panier.quantite}}
+                    </td>
+                </tr>
+                {% if panier.quantite > 1 %}
+                    <tr>
+                        <td width="80%" style="text-align:left; padding: 0 2.5em; color: #000; padding-bottom: 20px">
+                            Prix unitaire: {{panier.prix}}€
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            <tr>
+                <td width="80%" style="text-align:left; padding: 0 2.5em; color: #000; padding-bottom: 20px; border-top: 1px solid rgb(122, 122, 122);">
+                    Total à regler: {{total}}€
+                </td>
+            </tr>
+        </table>
+    </div>
+   
 </div>
