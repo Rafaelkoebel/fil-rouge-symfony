@@ -53,7 +53,7 @@ class CommandeController extends AbstractController
             }
             
             $email = (new TemplatedEmail())
-            ->from(new Address('rafael.koebel@gmail.com', 'rafaelKOEBEL'))
+            ->from(new Address('rougedelices@gmail.com', 'Rouge Délice'))
             ->bcc($commande->getUtilisateur()->getEmail(), $vente->getUtilisateur()->getEmail())
             ->subject('Votre commande')
             ->htmlTemplate('commande/detail_commande.html.twig')

@@ -1,7 +1,12 @@
-<h1>Confirmation de commande</h1>
+<style>
+    h1{
+        color: blueviolet;
+    }
+</style>
 
+<h1>Confirmation de commande</h1>
 <div>
-    <p class="text-success">Cher Madame,Monsieur {{nom}}, <br>
+    <p style="color: white;">Cher Madame,Monsieur {{nom}}, <br>
     Rouge Délice vous remercie de votre commande et de votre confiance <br>
     Nous traitons actuellement votre commande. Pour cette raison, celle-ci ne peut plus être modifiée. Veuillez trouver ci-dessous le détail des articles commandés. <br>
     Nous espérons que vous serez satisfait de vos achats. <br>
@@ -10,7 +15,7 @@
 </div>
 <h2>Détails de votre commande :</h2>
 <div>
-    <p>Adresse de livraison :</p>
+    <p style="text-decoration:underline;">Adresse de livraison :</p>
     {{prenom}} {{nom}} <br>
     {{adresseLivraison}} <br>
     {{codePostal}} {{ville}} <br>
