@@ -3,7 +3,7 @@
     <div style="background-color: white; width: 80%; margin: auto;">
         <h1 style="text-align: center;">Confirmation de commande</h1>
         <div style="margin: 20px; font-size: 1.3em;">
-            <p>Cher Madame,Monsieur {{nom}},</p>
+            <p>Cher {{prenom}} {{nom}} ,</p>
             <p>Rouge Délice vous remercie de votre commande et de votre confiance</p>
             Nous traitons actuellement votre commande. Pour cette raison, celle-ci ne peut plus être modifiée.<br>
             Veuillez trouver ci-dessous le détail des articles commandés. <br>
@@ -32,7 +32,6 @@
     <div style="background-color: white; width: 80%; margin: auto;">
         <h2 style="margin: 10px;">COMMANDE :</h2>
         <table class="bg_white" role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
-            <hr>
             <tr>
                 <th width="80%" style="text-align:left; padding: 0 2.5em; color: #000; padding-bottom: 20px">Produit:</th>
                 <th width="20%" style="text-align:right; padding: 0 2.5em; color: #000; padding-bottom: 20px">Prix:</th>
@@ -40,12 +39,12 @@
             </tr>
             {% for panier in dataPanier %}
                 <tr>
-                    <td width="80%" style="text-align:left; padding: 0 2.5em; color: #000; padding-bottom: 20px">
+                    <td width="80%" style="text-align:left; padding: 0 2.5em; color: #000; padding-bottom: 20px; border-top: 1px solid rgb(122, 122, 122);">
                         {{panier.produit}}
                     </td>
 
-                    <td width="20%" style="text-align:right; padding: 0 2.5em; color: #000; padding-bottom: 20px">
-                        {{panier.prix * panier.quantite}}
+                    <td width="20%" style="text-align:right; padding: 0 2.5em; color: #000; padding-bottom: 20px; border-top: 1px solid rgb(122, 122, 122);">
+                        {{panier.prix * panier.quantite}}€
                     </td>
 
                 </tr>
@@ -64,9 +63,9 @@
                 {% endif %}
             {% endfor %}
             <tr>
-                <td width="80%" style="text-align:left; padding: 0 2.5em; color: #000; padding-bottom: 20px; border-top: 1px solid rgb(122, 122, 122);">
+                <td width="80%" style="text-align:left; padding: 0 2.5em; color: #000; padding-bottom: 20px; border-top: 3px solid black;">
                     Total à regler: {{total}}€
-                </td>
+                </td>()
             </tr>
         </table>
     </div>
