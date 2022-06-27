@@ -39,6 +39,35 @@ class LigneCommandeRepository extends ServiceEntityRepository
         }
     }
 
+    // public function meslignecommandes($utilisateur)
+    // {
+    //     return $this->createQueryBuilder('lc')
+    //         ->andWhere('lc.utilisateur = :utilisateur_id')
+    //         ->setParameter('utilisateur_id', $utilisateur)
+    //         ->getQuery()
+    //         ->getResult()
+    //     ;
+    // }
+
+    // public function meslignescommandes($utilisateur): array
+    // {
+    //     $entityManager = $this->getEntityManager();
+
+    //     $query = $entityManager->createQuery(
+    //         'SELECT lc
+    //         FROM App\Entity\LigneCommande lc
+    //         WHERE lc.commande IN 
+    //             (SELECT c 
+    //             FROM App\Entity\Commande c
+    //             WHERE c.utilisateur = :utilisateur)'
+    //     )
+    //     ->setParameter('utilisateur', $utilisateur)
+    //     // ->setMaxResults($nb)
+    //     ;
+    //     return $query->getResult();
+    // }
+
+
 //    /**
 //     * @return LigneCommande[] Returns an array of LigneCommande objects
 //     */

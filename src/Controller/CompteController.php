@@ -6,6 +6,7 @@ use App\Entity\Sujet;
 use App\Entity\Vente;
 use App\Entity\Recette;
 use App\Form\VenteType;
+use App\Entity\Commande;
 use App\Entity\Commentaire;
 use App\Repository\SujetRepository;
 use App\Repository\VenteRepository;
@@ -13,6 +14,7 @@ use App\Repository\RecetteRepository;
 use App\Repository\CommandeRepository;
 use App\Repository\CommentaireRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use App\Repository\LigneCommandeRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -64,12 +66,9 @@ class CompteController extends AbstractController
     }
 
     #[Route('/commande', name: 'commande')]
-    public function commande(CommandeRepository $commandeRepository): Response
+    public function commande(): Response
     {
-        $utilisateur = $this->getUser('user');
-        $commandes = $commandeRepository->mescommandes($utilisateur);
         return $this->render('compte/commande.html.twig', [
-            'commandes' => $commandes,
         ]);
     }
 

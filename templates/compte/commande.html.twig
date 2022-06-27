@@ -3,25 +3,45 @@
 {% block title %}Mes commandes{% endblock %}
 
 {% block body %}
-{{dump(commandes)}}
-{# <div id="card">
-    {% for commande in commandes %}
+<style>
+    tr{
+        border: 1px solid black;
+    }
+    td{
+        font-weight: bold;
+        text-align: center;
+        color: white;
+    }
+    tr{
+        margin: 10px;
+    }
+</style>
+
+{{dump()}}
+<table>
+    <thead>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Adresse</th>
+        <th>Date</th>
+        <th>Action</th>
     
-            <div class="card m-3" style="width: 15rem; ">
-                <img src="{{ vente.produit.image }}" class="card-img-top" alt="" style="width: 100%">
-                <div class="card-body">
-                <h5 class="card-title fw-bolder">{{ vente.produit.nom}}</h5>
-                <h5 class="card-title fw-bolder">Prix : {{ vente.prix}} €</h5> 
-                </div>
-                <ul class="list-group list-group-flush">
-                <li class="list-group-item">Posté le {{vente.dateVente | format_datetime( locale='fr',pattern="dd MMMM YYYY") }}</li>
-                </ul> 
-                {% if is_granted("ROLE_FRUITICULTEUR") and vente.utilisateur.id == app.user.id %}
-                <a href="{{ path('app_compte_annonce_update', {id: vente.id}) }}" class="btn btn-info btn-sm">Modifier</a>
-                <a href="{{ path('app_compte_annonce_delete', {id: vente.id}) }}" class="btn btn-danger btn-sm" onclick="return confirm('Suppression ?')">Supprimer</a>
-                {% endif %}
-            </div> 
-    
+    </thead>
+    {% for commande in app.user.commandes | reverse %}
+    <tr>
+        <td> {{commande.nom}} </td>
+        <td> {{commande.prenom}} </td>
+        <td> {{commande.adresseLivraison}} </td>
+        <td> {{commande.dateCommande | format_datetime( locale='fr',pattern="dd MMMM YYYY HH:mm")}} </td>
+         
+        <td>
+            <a href="{{ path('app_commande_view', {id: commande.id}) }}">
+                <button>Détails</button>
+            </a>
+        </td> 
+    </tr>
     {% endfor %}
-</div> #}
+</table>
+
+
 {% endblock %}

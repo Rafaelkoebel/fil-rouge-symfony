@@ -83,4 +83,14 @@ class CommandeController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+
+    #[Route('/commande/{id}', name: 'app_commande_view')]
+    public function commandeid(): Response
+    {
+
+        return $this->render('commande/view.html.twig', [
+        ]);
+    }
+
 }
