@@ -83,7 +83,7 @@ class RecetteController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $commentaire->setUtilisateur($this->getUser());
             $commentaire->setRecette($recette);
-            $commentaire->setType(1);
+            $commentaire->setType('recette');
             $em = $doctrine->getManager();
             $em->persist($commentaire);
             $em->flush();

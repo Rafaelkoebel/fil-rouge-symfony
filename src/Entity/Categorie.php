@@ -18,7 +18,7 @@ class Categorie
     #[ORM\Column(type: 'string', length: 30)]
     private $nom;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type:'string', length: 30)]
     private $type;
 
     #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Recette::class)]
@@ -26,6 +26,9 @@ class Categorie
 
     #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Sujet::class, orphanRemoval: true)]
     private $sujets;
+
+    #[ORM\Column(type: 'string', length: 20, nullable: true)]
+    private $couleur;
 
 
     public function __toString()
@@ -56,12 +59,12 @@ class Categorie
         return $this;
     }
 
-    public function getType(): ?int
+    public function getType(): ?string
     {
         return $this->type;
     }
 
-    public function setType(int $type): self
+    public function setType(string $type): self
     {
         $this->type = $type;
 
@@ -124,6 +127,18 @@ class Categorie
                 $sujet->setCategorie(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCouleur(): ?string
+    {
+        return $this->couleur;
+    }
+
+    public function setCouleur(?string $couleur): self
+    {
+        $this->couleur = $couleur;
 
         return $this;
     }

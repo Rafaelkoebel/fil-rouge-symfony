@@ -17,7 +17,7 @@ class SujetType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $type = 2;
+        $type = 'sujet';
 
         $builder
             ->add('titre', TextType::class)

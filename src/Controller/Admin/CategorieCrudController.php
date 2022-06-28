@@ -5,7 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Categorie;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ColorField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class CategorieCrudController extends AbstractCrudController
@@ -21,7 +21,8 @@ class CategorieCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('nom'),
-            IntegerField::new('type')
+            TextField::new('type'),
+            ColorField::new('couleur')
             // ->formatValue(function ($value) {
             //     return $value < 3;
             // })

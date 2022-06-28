@@ -50,7 +50,7 @@ class SujetCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-        $type = 2;
+        $type = 'sujet';
         return [
             IdField::new('id')->hideOnForm(),
             AssociationField::new('utilisateur')->hideOnForm(),

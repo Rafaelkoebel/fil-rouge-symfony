@@ -52,7 +52,7 @@ class RecetteCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-        $type = 1;
+        $type = 'recette';
         return [
             IdField::new('id')->hideOnForm(),
             AssociationField::new('utilisateur')->hideOnForm(),

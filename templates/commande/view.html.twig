@@ -22,32 +22,17 @@
 <table>
     <thead>
         <th>Produit</th>
-        <th>Qauntité</th>
+        <th>Quantité</th>
         <th>Prix</th>
-    
     </thead>
- {% for ligne in app.user.commandes.ligneCommandes %}
-    {# {% for ligne in commande.ligneCommandes %}            #}
-     <tr>
+    {% for ligne in commande.ligneCommandes %}
+        <tr>
             <td>{{ligne.produit.nom}}</td>
             <td>{{ligne.quantite}}</td>
             <td>{{ligne.prix}}€</td>
         </tr>
-        {% endfor %}
-        {# {% endfor %} #}
-</table>
-
-{{dump()}}
-{# {% for commande in app.user.commandes | reverse %}
-    {% for ligne in commande.ligneCommandes %}
-        <p>{{ligne.produit.nom}}</p>
-        <p>{{ligne.quantite}}</p>
-        <p>{{ligne.prix}}</p>
     {% endfor %}
-{% endfor %} #}
-
-
-
+</table>
 
 {% endblock %}
 

@@ -86,10 +86,11 @@ class CommandeController extends AbstractController
 
 
     #[Route('/commande/{id}', name: 'app_commande_view')]
-    public function commandeid(): Response
+    public function commandeid(Commande $commande): Response
     {
 
         return $this->render('commande/view.html.twig', [
+            'commande' => $commande
         ]);
     }
 
