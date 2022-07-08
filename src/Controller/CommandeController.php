@@ -49,8 +49,8 @@ class CommandeController extends AbstractController
                 $lignecommande->setCommande($commande);
                 $lignecommande->setProduit($vente->getProduit());
                 $em->persist($lignecommande);
-                $em->flush();
             }
+            $em->flush();
             
             $email = (new TemplatedEmail())
             ->from(new Address('rougedelices@gmail.com', 'Rouge Délice'))
@@ -75,7 +75,7 @@ class CommandeController extends AbstractController
 
 
             $session->remove("panier");
-            $this->addFlash('successpanier', 'Votre commande a bien été enregistrée, vous allez recevoir un email avec le détail de votre commande. Pensez à vérifiez dans vos spam');
+            $this->addFlash('successpanier', 'Votre commande a bien été enregistrée, vous allez recevoir un email avec le détail de votre commande. Pensez à vérifier dans vos spam');
             return $this->redirectToRoute('home');
         }
 
