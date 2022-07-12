@@ -75,7 +75,7 @@ class CommandeController extends AbstractController
 
 
             $session->remove("panier");
-            $this->addFlash('successpanier', 'Votre commande a bien été enregistrée, vous allez recevoir un email avec le détail de votre commande. Pensez à vérifier dans vos spam');
+            $this->addFlash('successpanier', 'Votre commande a bien été enregistrée, vous allez recevoir un email avec le détail de votre commande. Pensez à vérifier dans vos spams');
             return $this->redirectToRoute('home');
         }
 

@@ -30,17 +30,6 @@
 .error-actions {margin-top:15px;margin-bottom:15px;}
 .error-actions .btn { margin-right:10px; }
 
-/* @font-face {
-  font-family: 'rudaregular';
-  src: url("/ruda_regular_macroman/Ruda-Regular-webfont.eot");
-  src: url("/ruda_regular_macroman/Ruda-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("/ruda_regular_macroman/Ruda-Regular-webfont.woff2") format("woff2"), url("/ruda_regular_macroman/Ruda-Regular-webfont.woff") format("woff"), url("/ruda_regular_macroman/Ruda-Regular-webfont.ttf") format("truetype"), url("/ruda_regular_macroman/Ruda-Regular-webfont.svg#rudaregular") format("svg");
-  font-weight: normal;
-  font-style: normal;
-} */
-
-/* #panier{
-  margin-right: 20px;
-} */
 
 #logoheader{
   display: flex;
@@ -196,7 +185,6 @@ legend{
 
 #main{
   height: 841px;
-  /* min-height: 4000px; */
   text-align: center;
   color: white;
   font-size: 40px;
@@ -257,12 +245,7 @@ a:link, a:visited,  a:hover, a:active{
   padding-top: 10px;
   margin: 3px;
   font-size: large;
-
-  /* font-weight: bold; */
 }
-/* #pc a:visited{
-  color: blue;
-} */
 
 header {
   display: -webkit-box;
@@ -289,7 +272,7 @@ header {
   padding-left: 20px;
   font-size: 40px;
   position: absolute;
-  top: -33px;
+  top: 0px;
 }
 
 #logo_menu {

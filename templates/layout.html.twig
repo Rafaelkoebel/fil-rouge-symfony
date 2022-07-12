@@ -23,8 +23,13 @@
             </a>
             <ul id="menu">
                 <span class="iconify"id="logo_menu" data-icon="gg:menu" style="color: black;"></span>
+                {% if not is_granted("ROLE_USER") %}
                 <a href="{{ path('app_login') }}">
                     <li>Se connecter</li>
+                </a>
+                {% else %}
+                <a href="{{ path('app_logout') }}">
+                    <li>Déconnexion</li>
                 </a>
                 <a href="{{ path('app_recette_add') }}">
                     <li>Proposer une recette</li>
@@ -32,6 +37,20 @@
                 <a href="{{ path('app_sujet_add') }}">
                     <li>Nouveau sujet</li>
                 </a>
+                <a href="{{ path('app_annonce_apercut') }}">
+                    <li>Annonces</li>
+                </a>
+                    {% if is_granted("ROLE_FRUITICULTEUR") %}
+                        <a href="{{ path('app_annonce_add') }}">
+                            <li>Nouvelle annonce</li>
+                        </a>
+                    {% endif %}
+                    {% if is_granted("ROLE_MODERATEUR") %}
+                        <a href="{{ path('admin') }}">
+                            <li>Back Office</li>
+                        </a>
+                    {% endif %}
+                {% endif %}
             </ul>
             {% if is_granted("ROLE_USER") %}
             <div id="logoheader">
