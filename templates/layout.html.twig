@@ -21,38 +21,18 @@
             <a href="{{ path('home') }}">
                 <span class="iconify" data-icon="openmoji:strawberry" style="color: black;"></span>
             </a>
-            {# <a href="#wrap">
-                <span class="iconify" data-icon="fluent:search-16-regular" style="color: black;"></span>
-            </a> #}
             <ul id="menu">
                 <span class="iconify"id="logo_menu" data-icon="gg:menu" style="color: black;"></span>
                 <a href="{{ path('app_login') }}">
                     <li>Se connecter</li>
                 </a>
-                {# <a href="/html/Tendances.html">
-                    <li>Tendances</li>
-                </a> #}
                 <a href="{{ path('app_recette_add') }}">
                     <li>Proposer une recette</li>
                 </a>
                 <a href="{{ path('app_sujet_add') }}">
                     <li>Nouveau sujet</li>
                 </a>
-                {# <a href="{{ path('app_saisons') }}">
-                    <li>Saisons</li>
-                </a>
-                <a href="{{ path('app_minuteur') }}">
-                    <li>Minuteur</li>
-                </a> #}
             </ul>
-            {# <nav class="navbar navbar-light bg-transparent">
-                <div class="container-fluid">
-                  <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                  </form>
-                </div>
-              </nav> #}
             {% if is_granted("ROLE_USER") %}
             <div id="logoheader">
 
@@ -136,17 +116,10 @@
         <footer style="background-color: #b1b1b1a2;">
             <div id="calc"> 
                 <div id="contactinfos">
-                    {# <a href="#" title="Contact">
-                        <span class="iconify" data-icon="fluent:contact-card-32-filled" style="color: black;"></span>
-                    </a> #}
                 <a href="{{ path('app_sujet_forum') }}" class="pfooter">Forum</a>
                 {% if is_granted("ROLE_USER") and not is_granted("ROLE_FRUITICULTEUR")%}
                     <a href="{{ path('app_register_fruiticulteur') }}" class="pfooter">Vous êtes Fruiticulteur ?</a>
                 {% endif %}
-                {# <div class="infos"> #}
-                    {# <a href="#" title="Informations">
-                        <span class="iconify" data-icon="bi:info-circle-fill" style="color: black;"></span>
-                    </a> #}
                 </div>
                 <div id="reseaux">
                     <a href="#" title="facebook">
