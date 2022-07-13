@@ -102,7 +102,17 @@ class RecetteController extends AbstractController
         $em = $doctrine->getManager();
         $em->remove($recette);
         $em->flush();
-        // $this->addFlash('success', 'Post supprimé !');
+        $this->addFlash('success', 'Recette supprimée !');
         return $this->redirectToRoute('home');
+    }
+
+    #[Route('/commentaire/delete/{id}', name: 'commentaire_delete')]
+    public function deletecommentaire(Commentaire $commentaire, ManagerRegistry $doctrine): Response
+    {
+        $em = $doctrine->getManager();
+        $em->remove($commentaire);
+        $em->flush();
+        $this->addFlash('success', 'Commentaire supprimé !');
+        return $this->redirectToRoute('app_compte_commentaire');
     }
 }

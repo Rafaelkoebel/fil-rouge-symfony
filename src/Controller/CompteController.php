@@ -66,9 +66,12 @@ class CompteController extends AbstractController
     }
 
     #[Route('/commande', name: 'commande')]
-    public function commande(): Response
+    public function commande(CommandeRepository $commandeRepository): Response
     {
+        $utilisateur = $this->getUser('user');
+        $commande = $commandeRepository->mescommandes($utilisateur);
         return $this->render('compte/commande.html.twig', [
+            'commande' => $commande,
         ]);
     }
 
@@ -78,7 +81,7 @@ class CompteController extends AbstractController
         $em = $doctrine->getManager();
         $em->remove($commentaire);
         $em->flush();
-        // $this->addFlash('success', 'Post supprimé !');
+        $this->addFlash('success', 'Commentaire supprimé !');
         return $this->redirectToRoute('app_compte_commentaire');
     }
 
@@ -88,7 +91,7 @@ class CompteController extends AbstractController
         $em = $doctrine->getManager();
         $em->remove($sujet);
         $em->flush();
-        // $this->addFlash('success', 'Post supprimé !');
+        $this->addFlash('success', 'Sujet supprimé !');
         return $this->redirectToRoute('app_compte_sujet');
     }
 
@@ -98,7 +101,7 @@ class CompteController extends AbstractController
         $em = $doctrine->getManager();
         $em->remove($recette);
         $em->flush();
-        // $this->addFlash('success', 'Post supprimé !');
+        $this->addFlash('success', 'Recette supprimée !');
         return $this->redirectToRoute('app_compte_recette');
     }
 
@@ -108,7 +111,7 @@ class CompteController extends AbstractController
         $em = $doctrine->getManager();
         $em->remove($vente);
         $em->flush();
-        // $this->addFlash('success', 'Post supprimé !');
+        $this->addFlash('success', 'Annonce supprimée !');
         return $this->redirectToRoute('app_compte_annonce');
     }
 

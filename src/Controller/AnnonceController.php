@@ -24,8 +24,6 @@ class AnnonceController extends AbstractController
     }
 
 
-
-
     #[Route('/add', name: 'add')]
     public function annonceadd(Request $request, ManagerRegistry $doctrine): Response
     {

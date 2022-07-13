@@ -77,7 +77,7 @@ class SujetController extends AbstractController
         $em = $doctrine->getManager();
         $em->remove($sujet);
         $em->flush();
-        // $this->addFlash('success', 'Post supprimé !');
+        $this->addFlash('success', 'Sujet supprimé !');
         return $this->redirectToRoute('app_sujet_forum');
     }
 
@@ -87,7 +87,7 @@ class SujetController extends AbstractController
         $em = $doctrine->getManager();
         $em->remove($commentaire);
         $em->flush();
-        // $this->addFlash('success', 'Post supprimé !');
-        return $this->redirectToRoute('app_sujet_forum');
+        $this->addFlash('success', 'Commentaire supprimé !');
+        return $this->redirectToRoute('app_compte_commentaire');
     }
 }

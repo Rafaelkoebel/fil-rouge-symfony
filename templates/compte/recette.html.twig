@@ -3,28 +3,27 @@
 {% block title %}Mes recettes{% endblock %}
 
 {% block body %}
-{# {{dump(utilisateur)}}
-{{dump(app.user)}} #}
-
-
-<div id="card">
-    {% for recette in recettes %}
-    
-        <a href="{{ path('app_recette_view', {slug: recette.slug}) }}" class="card-link">
-            <div class="card m-3" style="width: 15rem; ">
-                <img src="{{ recette.image }}" class="card-img-top" alt="" style="width: 100%">
-                <div class="card-body">
-                <h5 class="card-title fw-bolder">{{ recette.titre}}</h5>
-                <p class="card-text">{{ recette.instruction | u.truncate(100, '...')  | raw}}</p>
+{% if recettes %}
+    <div id="card">
+        {% for recette in recettes %}
+        
+            <a href="{{ path('app_recette_view', {slug: recette.slug}) }}" class="card-link">
+                <div class="card m-3" style="width: 15rem; ">
+                    <img src="{{ recette.image }}" class="card-img-top" alt="" style="width: 100%">
+                    <div class="card-body">
+                    <h5 class="card-title fw-bolder">{{ recette.titre}}</h5>
+                    <p class="card-text">{{ recette.instruction | u.truncate(100, '...')  | raw}}</p>
+                    </div>
+            </a>
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{recette.DatePublication | format_datetime( locale='fr',pattern="dd MMMM YYYY HH:mm") }}</li>
+                    </ul>
+                    <a href="{{ path('app_compte_recette_delete', {id: recette.id}) }}" class="btn btn-danger btn-sm" onclick="return confirm('Suppression ?')">Supprimer</a>
                 </div>
-        </a>
-                <ul class="list-group list-group-flush">
-                <li class="list-group-item">{{recette.DatePublication | format_datetime( locale='fr',pattern="dd MMMM YYYY HH:mm") }}</li>
-                </ul>
-                <a href="{{ path('app_compte_recette_delete', {id: recette.id}) }}" class="btn btn-danger btn-sm" onclick="return confirm('Suppression ?')">Supprimer</a>
-            </div>
-    
-    {% endfor %}
-</div>
-
+        
+        {% endfor %}
+    </div>
+{% else %}
+    <p style="text-align: center; color: white;">Vous n'avez pas posté de recettes</p>
+{% endif %}
 {% endblock %}

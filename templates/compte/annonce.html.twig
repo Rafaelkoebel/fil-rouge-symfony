@@ -3,27 +3,31 @@
 {% block title %}Mes annonces{% endblock %}
 
 {% block body %}
-<div id="card">
-    {% for vente in ventes %}
-    
-        {# <a href="{{ path('app_recette_view', {slug: produit.slug}) }}" class="card-link">  #}
-            <div class="card m-3" style="width: 15rem; ">
-                <img src="{{ vente.produit.image }}" class="card-img-top" alt="" style="width: 100%">
-                <div class="card-body">
-                <h5 class="card-title fw-bolder">{{ vente.produit.nom}}</h5>
-                <h5 class="card-title fw-bolder">Prix : {{ vente.prix}} €</h5> 
-                {# <h5 class="card-title fw-bolder">Vendu par :{{ vente.utilisateur.email}}</h5>  #}
-                </div>
-        {# </a>  #}
-                <ul class="list-group list-group-flush">
-                <li class="list-group-item">Posté le {{vente.dateVente | format_datetime( locale='fr',pattern="dd MMMM YYYY") }}</li>
-                </ul> 
-                {% if is_granted("ROLE_FRUITICULTEUR") and vente.utilisateur.id == app.user.id %}
-                <a href="{{ path('app_compte_annonce_update', {id: vente.id}) }}" class="btn btn-info btn-sm">Modifier</a>
-                <a href="{{ path('app_compte_annonce_delete', {id: vente.id}) }}" class="btn btn-danger btn-sm" onclick="return confirm('Suppression ?')">Supprimer</a>
-                {% endif %}
-            </div> 
-    
-    {% endfor %}
-</div>
+{% if ventes %}
+    <div id="card">
+        {% for vente in ventes %}
+        
+            {# <a href="{{ path('app_recette_view', {slug: produit.slug}) }}" class="card-link">  #}
+                <div class="card m-3" style="width: 15rem; ">
+                    <img src="{{ vente.produit.image }}" class="card-img-top" alt="" style="width: 100%">
+                    <div class="card-body">
+                    <h5 class="card-title fw-bolder">{{ vente.produit.nom}}</h5>
+                    <h5 class="card-title fw-bolder">Prix : {{ vente.prix}} €</h5> 
+                    {# <h5 class="card-title fw-bolder">Vendu par :{{ vente.utilisateur.email}}</h5>  #}
+                    </div>
+            {# </a>  #}
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Posté le {{vente.dateVente | format_datetime( locale='fr',pattern="dd MMMM YYYY") }}</li>
+                    </ul> 
+                    {% if is_granted("ROLE_FRUITICULTEUR") and vente.utilisateur.id == app.user.id %}
+                    <a href="{{ path('app_compte_annonce_update', {id: vente.id}) }}" class="btn btn-info btn-sm">Modifier</a>
+                    <a href="{{ path('app_compte_annonce_delete', {id: vente.id}) }}" class="btn btn-danger btn-sm" onclick="return confirm('Suppression ?')">Supprimer</a>
+                    {% endif %}
+                </div> 
+        
+        {% endfor %}
+    </div>
+{% else %}
+    <p style="text-align: center; color: white;">Vous n'avez pas posté d'annonces</p>
+{% endif %}
 {% endblock %}

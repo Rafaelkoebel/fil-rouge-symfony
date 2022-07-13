@@ -21,30 +21,32 @@
         color: white;
     }
 </style>
-
-<table>
-    <thead>
-        <th>Nom</th>
-        <th>Prenom</th>
-        <th>Adresse</th>
-        <th>Date</th>
-        <th>Action</th>
-    
-    </thead>
-    {% for commande in app.user.commandes | reverse %}
-    <tr>
-        <td> {{commande.nom}} </td>
-        <td> {{commande.prenom}} </td>
-        <td> {{commande.adresseLivraison}} </td>
-        <td> {{commande.dateCommande | format_datetime( locale='fr',pattern="dd MMMM YYYY HH:mm")}} </td>
-        <td>
-            <a href="{{ path('app_commande_view', {id: commande.id}) }}">
-                <button>Détails</button>
-            </a>
-        </td> 
-    </tr>
-    {% endfor %}
-</table>
-
+{% if commande %}
+    <table>
+        <thead>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Adresse</th>
+            <th>Date</th>
+            <th>Action</th>
+        
+        </thead>
+        {% for commande in app.user.commandes | reverse %}
+        <tr>
+            <td> {{commande.nom}} </td>
+            <td> {{commande.prenom}} </td>
+            <td> {{commande.adresseLivraison}} </td>
+            <td> {{commande.dateCommande | format_datetime( locale='fr',pattern="dd MMMM YYYY HH:mm")}} </td>
+            <td>
+                <a href="{{ path('app_commande_view', {id: commande.id}) }}">
+                    <button>Détails</button>
+                </a>
+            </td> 
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p style="text-align: center; color: white;">Vous n'avez pas passé de commandes</p>
+{% endif %}
 
 {% endblock %}
