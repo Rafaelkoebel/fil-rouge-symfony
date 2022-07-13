@@ -3,7 +3,7 @@
     <div style="background-color: white; width: 80%; margin: auto;">
         <h1 style="text-align: center;">Confirmation de commande</h1>
         <div style="margin: 20px; font-size: 1.3em;">
-            <p>Cher {{prenom}} {{nom}} ,</p>
+            <p>Cher {{commande.prenom}} {{commande.nom}} ,</p>
             <p>Rouge Délice vous remercie de votre commande et de votre confiance</p>
             Nous traitons actuellement votre commande. Pour cette raison, celle-ci ne peut plus être modifiée.<br>
             Veuillez trouver ci-dessous le détail des articles commandés. <br>
@@ -18,14 +18,14 @@
         <h2 style="margin: 10px;">Détails de votre commande :</h2>
         <div style="margin: 20px; font-size: 1.3em;">
             <p style="text-decoration:underline; font-weight: bold;">Adresse de livraison :</p>
-            {{prenom}} {{nom}} <br>
-            {{adresseLivraison}} <br>
-            {{codePostal}} {{ville}} <br>
-            {{pays}} <br>
-            {{telephone}}
+            {{commande.prenom}} {{commande.nom}} <br>
+            {{commande.adresseLivraison}} <br>
+            {{commande.codePostal}} {{commande.ville}} <br>
+            {{commande.pays}} <br>
+            {{commande.telephone}}
             
             <p style="text-decoration:underline; font-weight: bold;">Date de commande :</p>
-            {{dateCommande | format_datetime( locale='fr',pattern="dd MMMM YYYY HH:mm")}}
+            {{commande.dateCommande | format_datetime( locale='fr',pattern="dd MMMM YYYY HH:mm")}}
         </div>
     </div>
 

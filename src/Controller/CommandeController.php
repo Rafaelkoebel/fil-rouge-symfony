@@ -59,15 +59,7 @@ class CommandeController extends AbstractController
             ->htmlTemplate('commande/detail_commande.html.twig')
             ->context([
                 'dataPanier' => $dataPanier,
-                'vendeur' => $vente->getUtilisateur()->getEmail(),
-                'nom' => $commande->getNom(),
-                'prenom' => $commande->getPrenom(),
-                'adresseLivraison' => $commande->getAdresseLivraison(),
-                'codePostal' => $commande->getCodePostal(),
-                'ville' => $commande->getVille(),
-                'pays' => $commande->getPays(),
-                'telephone' => $commande->getTelephone(),
-                'dateCommande' => $commande->getDateCommande(),
+                'commande' => $commande,
                 'total' => $total,
             ])
             ;
