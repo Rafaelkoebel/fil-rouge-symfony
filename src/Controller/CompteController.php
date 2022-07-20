@@ -126,7 +126,6 @@ class CompteController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('app_compte_annonce');
         }
-        // $this->addFlash('success', 'Post modifié !');
         return $this->render('annonce/add.html.twig', [
             'form' => $form->createView(),
         ]);    }

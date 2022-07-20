@@ -10,7 +10,6 @@
 <div id="card">
     {% for vente in ventes %}
     
-        {# <a href="{{ path('app_recette_view', {slug: produit.slug}) }}" class="card-link">  #}
             <div class="card m-3" style="width: 15rem; ">
                 <img src="{{ vente.produit.image }}" class="card-img-top" alt="" style="width: 100%">
                 <div class="card-body">
@@ -18,7 +17,6 @@
                 <h5 class="card-title fw-bolder">Prix : {{ vente.prix}} €</h5> 
                 <h5 class="card-title fw-bolder">Vendu par :{{ vente.utilisateur.email}}</h5> 
                 </div>
-        {# </a>  #}
                 <ul class="list-group list-group-flush">
                 <li class="list-group-item">Posté le {{vente.dateVente | format_datetime( locale='fr',pattern="dd MMMM YYYY") }}</li>
                 </ul>

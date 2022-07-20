@@ -22,12 +22,7 @@ class CategorieCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             TextField::new('nom'),
             TextField::new('type'),
-            ColorField::new('couleur')
-            // ->formatValue(function ($value) {
-            //     return $value < 3;
-            // })
-            ,
-            // TextEditorField::new('description'),
+            ColorField::new('couleur'),
         ];
     }
 }

@@ -1,0 +1,164 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Minuteur{% endblock %}
+
+{% block body %}
+<style>
+    input{
+    width: 100px;
+    font-size: 50px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.518);
+    margin: 20px;
+    }
+    #minuteur{
+        font-size: x-large;
+        color: white;
+        display: flex;
+        justify-content: center;
+    }
+    .nombre{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    #hms{
+        display: flex;
+        justify-content: center;
+    }
+    label{
+        font-size: 20px;
+        font-style: italic;
+    }
+    #boutons{
+        display: flex;
+        justify-content: center;
+        justify-content: space-around;
+    }
+    button{
+        border-radius: 10px;
+        color: white;
+        font-size: 30px;
+        margin: 30px;
+    }
+    #str{
+        background-color: rgb(21, 115, 71);
+    }
+    #top{
+        background-color: rgb(255, 202, 44);
+    }
+    #res{
+        background-color: rgb(187, 45, 59);
+    }
+</style>
+<div id="minuteur">
+    <div>
+        <div id="hms">
+                <div class="nombre">
+                <input id="h" type="number" placeholder="00" max="10">
+                <label for="h">heures</label>
+                </div>
+    
+                <div class="nombre">
+                <input id="m" type="number" placeholder="00" max="59">
+                <label for="m">minutes</label>
+                </div>
+                
+                <div class="nombre">
+                <input id="s" type="number" placeholder="00" max="59">
+                <label for="s">secondes</label>
+                </div>
+        </div>
+
+        <div id="boutons">
+            <button id="str">Démarrer</button>
+            <button id="top">Arreter</button>
+            <button id="res">R.A.Z.</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+
+<script>
+
+let idstart = document.getElementById('str');
+let idstop = document.getElementById('top');
+let idreset = document.getElementById('res');
+
+let hrs = 0;
+let min = 0;
+let sec = 0;
+affiche();
+let interval = 1000;
+
+idstart.addEventListener("click", start);
+idreset.addEventListener("click", reset);
+idstop.addEventListener("click", stop);
+
+function update_chrono(){
+    if ((hrs == 0) && (min == 0) && (sec == 0)) {
+            clearInterval(refresh);
+            alert('C\' est prêt !');
+            return;
+    }
+    sec -= 1;
+    if (sec < 0){
+        sec = 59;
+        min --;
+        if (min < 0){
+            min = 59;
+            hrs--;
+        }
+    }
+
+    affiche();
+    
+}
+    
+function affiche(){
+    if (hrs < 10) {
+        h.value = '0' + hrs;
+    } 
+    else {
+        h.value = hrs;
+    }
+  
+    if (min < 10) {
+        m.value = '0' + min;
+    } else {
+        m.value = min;
+    }
+
+    if (sec < 10) {
+        s.value = '0' + sec;
+    } else {
+        s.value = sec;
+    }
+}  
+    
+function start(){
+
+    hrs = parseInt(h.value);
+    sec = parseInt(s.value);
+    min = parseInt(m.value);
+
+    refresh = setInterval(update_chrono, interval);
+}
+    
+function reset(){
+    hrs = 0;
+    min = 0;
+    sec = 0;
+
+    affiche();
+}
+
+function stop(){
+    clearInterval(refresh);
+}
+
+</script>
+
+{% endblock %}
