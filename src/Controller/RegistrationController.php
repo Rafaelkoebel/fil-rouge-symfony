@@ -82,6 +82,7 @@ class RegistrationController extends AbstractController
             $utilisateur->setRoles(["ROLE_FRUITICULTEUR"]);
             $em = $doctrine->getManager();
             $em->flush();
+            $this->addFlash('success', 'Vous êtes maintenant fruiticulteur, reconnectez-vous pour ajouter de nouvelles annonces !');
             return $this->redirectToRoute('home');
         }
 
